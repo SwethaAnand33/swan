@@ -3430,13 +3430,15 @@ You can replace music.mp3 with your own song.
 
 <audio
 
-id="bgMusic"
+    id="bgMusic"
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    loop>
 
-src="assets/music.mp3"
-
-preload="auto"
-
-loop>
+    <source
+        src="assets/music.mp3"
+        type="audio/mpeg">
 
 </audio>
 
@@ -7267,8 +7269,6 @@ couple-02.jpg
 
 couple-10.jpg
 
-
-
 */
 
 
@@ -7487,33 +7487,50 @@ const looks = [
 
 /* =========================================================
 
-MUSIC & RAVE PLAYER
+MUSIC & RAVE PLAYER (MOBILE OPTIMIZED)
 
 ========================================================= */
 
 
 
-const music = document.getElementById("bgMusic");
+const music =
 
-const raveProgressFill = document.getElementById("raveProgressFill");
+    document.getElementById("bgMusic");
 
-const raveProgressBar = document.getElementById("raveProgressBar");
+const raveProgressFill =
 
-const raveCurrentTime = document.getElementById("raveCurrentTime");
+    document.getElementById("raveProgressFill");
 
-const raveDuration = document.getElementById("raveDuration");
+const raveProgressBar =
 
-const raveStatus = document.getElementById("raveStatus");
+    document.getElementById("raveProgressBar");
 
-const ravePlayBtn = document.getElementById("ravePlayBtn");
+const raveCurrentTime =
 
-const ravePauseBtn = document.getElementById("ravePauseBtn");
+    document.getElementById("raveCurrentTime");
 
+const raveDuration =
+
+    document.getElementById("raveDuration");
+
+const raveStatus =
+
+    document.getElementById("raveStatus");
+
+const ravePlayBtn =
+
+    document.getElementById("ravePlayBtn");
+
+const ravePauseBtn =
+
+    document.getElementById("ravePauseBtn");
+
+let isAudioUnlocked = false;
 
 
 function formatTime(seconds) {
 
-    if (isNaN(seconds) || seconds < 0) return "0:00";
+    if (isNaN(seconds) || seconds < 0 || !isFinite(seconds)) return "0:00";
 
     const mins = Math.floor(seconds / 60);
 
@@ -7524,108 +7541,159 @@ function formatTime(seconds) {
 }
 
 
-
 function updateProgress() {
 
-    if (!music.duration) return;
+    if (!music.duration || !isFinite(music.duration)) return;
 
-    const percent = (music.currentTime / music.duration) * 100;
+    const percent =
 
-    raveProgressFill.style.width = percent + "%";
+        (music.currentTime / music.duration) * 100;
 
-    raveCurrentTime.textContent = formatTime(music.currentTime);
+    raveProgressFill.style.width =
 
-    raveDuration.textContent = formatTime(music.duration);
+        percent + "%";
+
+    raveCurrentTime.textContent =
+
+        formatTime(music.currentTime);
+
+    raveDuration.textContent =
+
+        formatTime(music.duration);
 
 }
 
 
-
 music.addEventListener("loadedmetadata", () => {
 
-    raveDuration.textContent = formatTime(music.duration);
+    if (music.duration && isFinite(music.duration)) {
+        raveDuration.textContent = formatTime(music.duration);
+    }
 
 });
 
+
+music.addEventListener("durationchange", () => {
+
+    if (music.duration && isFinite(music.duration)) {
+        raveDuration.textContent = formatTime(music.duration);
+    }
+
+});
 
 
 music.addEventListener("timeupdate", updateProgress);
 
 
-
 music.addEventListener("ended", () => {
 
-    raveStatus.textContent = "Song ended. Replaying our memories... ❤️";
+    raveStatus.textContent =
+
+        "Song ended. Replaying our memories... ❤️";
 
 });
 
 
+function unlockAudioMobile() {
+
+    if (!isAudioUnlocked) {
+        music.load();
+        isAudioUnlocked = true;
+    }
+
+}
+
 
 function playSong() {
+
+    unlockAudioMobile();
 
     const playPromise = music.play();
 
     if (playPromise !== undefined) {
 
-        playPromise.then(() => {
+        playPromise
+            .then(() => {
 
-            raveStatus.textContent = "Playing our song... Just like our Rave nights 🎵❤️";
+                raveStatus.textContent =
 
-        }).catch((err) => {
+                    "Playing our song... Just like our Rave nights 🎵❤️";
 
-            console.warn("Autoplay/Play prevented: ", err);
+                if (music.duration && isFinite(music.duration)) {
+                    raveDuration.textContent = formatTime(music.duration);
+                }
 
-            raveStatus.textContent = "Tap screen or play button again to start audio! 🎵";
+            })
+            .catch(err => {
 
-        });
+                console.warn("Mobile playback notice: ", err);
+
+                raveStatus.textContent =
+
+                    "Tap Play Together again to start audio! 🎵";
+
+            });
 
     }
 
 }
 
 
-
 function pauseSong() {
 
     music.pause();
 
-    raveStatus.textContent = "Music paused. Waiting for you to press play 🫶";
+    raveStatus.textContent =
+
+        "Music paused. Waiting for you to press play 🫶";
 
 }
 
 
-
-ravePlayBtn.onclick = () => {
+ravePlayBtn.addEventListener("click", () => {
 
     playSong();
 
     heartPop(ravePlayBtn);
 
-};
+});
 
 
+ravePlayBtn.addEventListener("touchend", () => {
 
-ravePauseBtn.onclick = () => {
+    unlockAudioMobile();
+
+}, { passive: true });
+
+
+ravePauseBtn.addEventListener("click", () => {
 
     pauseSong();
 
     heartPop(ravePauseBtn);
 
-};
+});
 
 
+raveProgressBar.onclick = e => {
 
-raveProgressBar.onclick = (e) => {
+    if (!music.duration || !isFinite(music.duration)) return;
 
-    if (!music.duration) return;
+    const rect =
 
-    const rect = raveProgressBar.getBoundingClientRect();
+        raveProgressBar.getBoundingClientRect();
 
-    const clickX = e.clientX - rect.left;
+    const clickX =
 
-    const width = rect.width;
+        e.clientX - rect.left;
 
-    music.currentTime = (clickX / width) * music.duration;
+    const width =
+
+        rect.width;
+
+    music.currentTime =
+
+        (clickX / width) * music.duration;
 
 };
 
@@ -7663,51 +7731,41 @@ document
 
 if(nicknames.includes(value)){
 
+    unlockAudioMobile();
 
+    document
 
-document
+        .getElementById("gate")
 
-.getElementById("gate")
+        .classList
 
-.classList
+        .add("hidden");
 
-.add("hidden");
+    document
 
+        .getElementById("main")
 
+        .classList
 
+        .remove("hidden");
 
+    const initialPlay = music.play();
 
-document
+    if (initialPlay !== undefined) {
+        initialPlay
+            .then(() => {
+                raveStatus.textContent =
+                    "Playing our song... Just like our Rave nights 🎵❤️";
+            })
+            .catch(() => {
+                raveStatus.textContent =
+                    "Waiting for my favourite person to press play... 🫶";
+            });
+    }
 
-.getElementById("main")
+    initReveal();
 
-.classList
-
-.remove("hidden");
-
-
-
-
-
-// Try unlocking audio context on initial entry click
-
-music.play().then(() => {
-
-    raveStatus.textContent = "Playing our song... Just like our Rave nights 🎵❤️";
-
-}).catch(() => {
-
-    raveStatus.textContent = "Waiting for my favourite person to press play... 🫶";
-
-});
-
-
-
-
-
-initReveal();
-
-startPickupTimer();
+    startPickupTimer();
 
 
 
@@ -7755,15 +7813,17 @@ card.classList.add("shake");
 
 
 
+document
 
+.getElementById("enterBtn")
+
+.addEventListener("click", openGate);
 
 document
 
 .getElementById("enterBtn")
 
-.onclick = openGate;
-
-
+.addEventListener("touchstart", unlockAudioMobile, { passive: true });
 
 
 
@@ -8015,8 +8075,6 @@ memories[
 
 
 
-
-
 document
 
 .getElementById("modalImage")
@@ -8024,8 +8082,6 @@ document
 .src =
 
 memory[3];
-
-
 
 
 
@@ -8039,8 +8095,6 @@ memory[0];
 
 
 
-
-
 document
 
 .getElementById("modalTitle")
@@ -8051,8 +8105,6 @@ memory[1];
 
 
 
-
-
 document
 
 .getElementById("modalText")
@@ -8060,8 +8112,6 @@ document
 .textContent =
 
 memory[2];
-
-
 
 
 
@@ -8076,8 +8126,6 @@ document
 
 
 };
-
-
 
 }
 
@@ -8301,8 +8349,6 @@ cricketIndex =
 
 
 
-
-
 document
 
 .getElementById("cricketText")
@@ -8314,8 +8360,6 @@ cricketLines[
 cricketIndex
 
 ];
-
-
 
 
 
@@ -8633,8 +8677,6 @@ dangerous: [
 
 
 
-
-
 const pickupDescriptions = {
 
 
@@ -8658,8 +8700,6 @@ dangerous:
 
 
 };
-
-
 
 
 
@@ -8756,8 +8796,6 @@ button.dataset.level;
 
 
 
-
-
 document
 
 .querySelectorAll(".level-btn")
@@ -8774,11 +8812,7 @@ b.classList
 
 
 
-
-
 button.classList.add("active");
-
-
 
 
 
@@ -8796,8 +8830,6 @@ currentPickupLevel
 
 
 
-
-
 pickupIndex = 0;
 
 renderPickupLine(true);
@@ -8807,8 +8839,6 @@ resetPickupTimer();
 
 
 };
-
-
 
 }
 
@@ -8903,8 +8933,6 @@ card
 
 
 
-
-
 document
 
 .getElementById("miniText")
@@ -8912,8 +8940,6 @@ document
 .textContent =
 
 card.dataset.future;
-
-
 
 
 
@@ -8928,8 +8954,6 @@ document
 
 
 };
-
-
 
 }
 
@@ -9023,8 +9047,6 @@ document
 
 
 
-
-
 document
 
 .getElementById("capsuleBtn")
@@ -9032,8 +9054,6 @@ document
 .textContent =
 
 "🔓 Opened";
-
-
 
 
 
@@ -9098,8 +9118,6 @@ const noTexts = [
 
 
 "Nope nope nope.",
-
-
 
 "You can't escape this question. 👀",
 
@@ -9315,8 +9333,6 @@ celebrate();
 
 
 
-
-
 document
 
 .getElementById("letterSection")
@@ -9324,8 +9340,6 @@ document
 .classList
 
 .remove("hidden");
-
-
 
 
 
@@ -9505,8 +9519,6 @@ setTimeout(
 
 
 
-
-
 document
 
 .getElementById("yesBtn")
@@ -9517,13 +9529,9 @@ document
 
 
 
-
-
 noBtn.style.display =
 
 "none";
-
-
 
 
 
@@ -9559,8 +9567,6 @@ element
 
 
 
-
-
 for(
 
 let i=0;
@@ -9579,13 +9585,9 @@ document.createElement("span");
 
 
 
-
-
 heart.className =
 
 "love-pop";
-
-
 
 
 
@@ -9605,8 +9607,6 @@ heart.textContent =
 
 
 
-
-
 heart.style.left =
 
 rect.left +
@@ -9623,8 +9623,6 @@ Math.random()*50-25
 
 
 
-
-
 heart.style.top =
 
 rect.top + 10 +
@@ -9633,15 +9631,11 @@ rect.top + 10 +
 
 
 
-
-
 document
 
 .body
 
 .appendChild(heart);
-
-
 
 
 
@@ -9656,8 +9650,6 @@ setTimeout(
 
 
 }
-
-
 
 }
 
@@ -9685,13 +9677,9 @@ document.createElement("span");
 
 
 
-
-
 heart.className =
 
 "float-heart";
-
-
 
 
 
@@ -9719,15 +9707,11 @@ Math.random()*4
 
 
 
-
-
 heart.style.left =
 
 Math.random()*100 +
 
 "%";
-
-
 
 
 
@@ -9741,8 +9725,6 @@ Math.random()*18 +
 
 
 
-
-
 heart.style.animationDuration =
 
 7 +
@@ -9753,15 +9735,11 @@ Math.random()*8 +
 
 
 
-
-
 document
 
 .getElementById("floatingHearts")
 
 .appendChild(heart);
-
-
 
 
 
