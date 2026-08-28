@@ -1,0 +1,9719 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#090510">
+
+
+
+<title>Our Little Universe ❤️</title>
+
+
+
+<style>
+    /* ===== DESKTOP FIX - DHONI VS HARDIK CARDS ===== */
+@media (min-width: 769px) {
+
+    /* Only the cricket rivalry section */
+    .stats-grid.rivalry-grid {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 40px;
+        width: 100%;
+        max-width: 900px;
+        margin: 40px auto;
+    }
+
+    .stats-grid.rivalry-grid > .stat-card {
+        flex: 1;
+        max-width: 360px;
+    }
+
+}
+
+
+
+/* =========================================================
+
+GLOBAL
+
+========================================================= */
+
+
+
+*{
+
+box-sizing:border-box;
+
+margin:0;
+
+padding:0;
+
+}
+
+
+
+:root{
+
+--bg:#090510;
+
+--bg2:#130916;
+
+--card:rgba(255,255,255,.055);
+
+--line:rgba(255,255,255,.11);
+
+--text:#fff8fb;
+
+--muted:#cbbbc5;
+
+--pink:#ff6f9d;
+
+--pink2:#ffb8cf;
+
+--gold:#ffe09b;
+
+--green:#78e0b0;
+
+}
+
+
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+
+
+body{
+
+background:var(--bg);
+
+color:var(--text);
+
+font-family:Arial,sans-serif;
+
+line-height:1.7;
+
+overflow-x:hidden;
+
+}
+
+
+
+button,
+
+input{
+
+font:inherit;
+
+}
+
+
+
+button{
+
+cursor:pointer;
+
+}
+
+
+
+.hidden{
+
+display:none!important;
+
+}
+
+
+
+.container{
+
+width:min(1100px,92%);
+
+margin:auto;
+
+position:relative;
+
+z-index:2;
+
+}
+
+
+
+.narrow{
+
+width:min(780px,92%);
+
+}
+
+
+
+.center{
+
+text-align:center;
+
+}
+
+
+
+.section{
+
+min-height:70vh;
+
+padding:105px 0;
+
+position:relative;
+
+display:flex;
+
+align-items:center;
+
+}
+
+
+
+.soft{
+
+background:
+
+linear-gradient(
+
+180deg,
+
+rgba(255,255,255,.025),
+
+rgba(255,105,150,.025)
+
+);
+
+}
+
+
+
+h1,
+
+h2,
+
+h3{
+
+font-family:Georgia,serif;
+
+line-height:1.08;
+
+}
+
+
+
+h2{
+
+font-size:clamp(2.6rem,6vw,5rem);
+
+}
+
+
+
+h1 span,
+
+h2 span{
+
+color:var(--pink2);
+
+}
+
+
+
+p{
+
+color:var(--muted);
+
+}
+
+
+
+.lead{
+
+font-size:1.05rem;
+
+max-width:700px;
+
+margin:18px auto;
+
+}
+
+
+
+.eyebrow{
+
+text-transform:uppercase;
+
+letter-spacing:4px;
+
+font-size:.7rem;
+
+color:var(--pink2);
+
+margin-bottom:14px;
+
+font-weight:bold;
+
+}
+
+
+
+/* =========================================================
+
+BUTTONS
+
+========================================================= */
+
+
+
+.primary-btn,
+
+.secondary-btn,
+
+.yes-btn,
+
+.no-btn,
+
+.level-btn{
+
+border-radius:999px;
+
+padding:14px 24px;
+
+font-weight:bold;
+
+transition:.25s;
+
+}
+
+
+
+.primary-btn{
+
+background:linear-gradient(
+
+135deg,
+
+#ff6f9d,
+
+#ff9fbd
+
+);
+
+color:#260916;
+
+border:0;
+
+box-shadow:0 10px 35px rgba(255,90,140,.22);
+
+}
+
+
+
+.primary-btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+.secondary-btn{
+
+background:transparent;
+
+border:1px solid rgba(255,255,255,.2);
+
+color:white;
+
+}
+
+
+
+.music-btn{
+
+position:fixed;
+
+right:18px;
+
+top:18px;
+
+z-index:1000;
+
+width:46px;
+
+height:46px;
+
+border-radius:50%;
+
+border:1px solid var(--line);
+
+background:rgba(10,5,16,.8);
+
+color:white;
+
+}
+
+
+
+/* =========================================================
+
+STARS + FLOATING HEARTS
+
+========================================================= */
+
+
+
+#stars{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+opacity:.65;
+
+z-index:0;
+
+
+
+background-image:
+
+radial-gradient(
+
+circle at 10% 20%,
+
+#fff 0 1px,
+
+transparent 1.5px
+
+),
+
+radial-gradient(
+
+circle at 80% 30%,
+
+#fff 0 1px,
+
+transparent 1.5px
+
+),
+
+radial-gradient(
+
+circle at 30% 80%,
+
+#fff 0 1px,
+
+transparent 1.5px
+
+);
+
+
+
+background-size:
+
+170px 190px,
+
+230px 220px,
+
+190px 230px;
+
+}
+
+
+
+.floating-hearts{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+z-index:1;
+
+overflow:hidden;
+
+}
+
+
+
+.float-heart{
+
+position:absolute;
+
+bottom:-30px;
+
+animation:floatUp linear forwards;
+
+opacity:.5;
+
+}
+
+
+
+@keyframes floatUp{
+
+to{
+
+transform:
+
+translateY(-110vh)
+
+rotate(25deg);
+
+opacity:0;
+
+}
+
+}
+
+
+
+/* =========================================================
+
+PASSWORD / INTRO GATE
+
+========================================================= */
+
+
+
+.gate{
+
+position:fixed;
+
+inset:0;
+
+
+
+background:
+
+radial-gradient(
+
+circle at center,
+
+rgba(116,25,66,.4),
+
+transparent 45%
+
+),
+
+#090510;
+
+
+
+z-index:2000;
+
+
+
+display:grid;
+
+place-items:center;
+
+padding:20px;
+
+}
+
+
+
+.gate-card{
+
+width:min(480px,100%);
+
+text-align:center;
+
+padding:45px 30px;
+
+
+
+border:1px solid var(--line);
+
+
+
+background:rgba(255,255,255,.045);
+
+
+
+border-radius:28px;
+
+}
+
+
+
+.tiny-heart{
+
+font-size:4rem;
+
+color:var(--pink);
+
+animation:pulse 1.8s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+50%{
+
+transform:scale(1.1);
+
+}
+
+}
+
+
+
+.gate h1{
+
+font-size:clamp(2.8rem,8vw,4.5rem);
+
+margin:5px 0 12px;
+
+}
+
+
+
+.gate-copy{
+
+margin-bottom:20px;
+
+}
+
+
+
+.gate input{
+
+width:100%;
+
+padding:14px 18px;
+
+
+
+border-radius:999px;
+
+border:1px solid var(--line);
+
+
+
+background:rgba(0,0,0,.25);
+
+
+
+color:white;
+
+outline:0;
+
+
+
+margin-bottom:12px;
+
+
+
+text-align:center;
+
+}
+
+
+
+.hint{
+
+font-size:.75rem;
+
+margin-top:12px;
+
+color:#8e7d87;
+
+}
+
+
+
+.shake{
+
+animation:shake .35s;
+
+}
+
+
+
+@keyframes shake{
+
+25%{transform:translateX(-8px)}
+
+50%{transform:translateX(8px)}
+
+75%{transform:translateX(-5px)}
+
+}
+
+
+
+/* =========================================================
+
+HERO
+
+========================================================= */
+
+
+
+.hero{
+
+min-height:100svh;
+
+overflow:hidden;
+
+}
+
+
+
+.hero-glow{
+
+position:absolute;
+
+width:700px;
+
+height:700px;
+
+
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(255,80,140,.16),
+
+transparent 65%
+
+);
+
+
+
+left:50%;
+
+top:40%;
+
+
+
+transform:
+
+translate(-50%,-50%);
+
+}
+
+
+
+.hero-title{
+
+font-size:clamp(3.4rem,9vw,7rem);
+
+max-width:1000px;
+
+margin:0 auto 22px;
+
+}
+
+
+
+.hero-sub{
+
+font-size:1.05rem;
+
+margin-bottom:28px;
+
+}
+
+
+
+.scroll-note{
+
+margin-top:60px;
+
+font-size:.72rem;
+
+letter-spacing:2px;
+
+color:#887782;
+
+}
+
+
+
+.date-pill{
+
+display:inline-block;
+
+
+
+border:1px solid var(--line);
+
+
+
+padding:9px 16px;
+
+
+
+border-radius:999px;
+
+
+
+font-size:.8rem;
+
+color:#ddd;
+
+
+
+margin-top:20px;
+
+}
+
+
+
+/* =========================================================
+
+TIMELINE
+
+========================================================= */
+
+
+
+.section-heading{
+
+margin-bottom:50px;
+
+}
+
+
+
+.section-heading h2{
+
+max-width:920px;
+
+margin:auto;
+
+}
+
+
+
+.timeline{
+
+position:relative;
+
+max-width:830px;
+
+margin:auto;
+
+}
+
+
+
+.timeline:before{
+
+content:"";
+
+
+
+position:absolute;
+
+
+
+left:24px;
+
+top:0;
+
+bottom:0;
+
+
+
+width:1px;
+
+
+
+background:
+
+linear-gradient(
+
+var(--pink),
+
+transparent
+
+);
+
+}
+
+
+
+.timeline-item{
+
+display:grid;
+
+
+
+grid-template-columns:50px 1fr;
+
+
+
+gap:20px;
+
+
+
+margin-bottom:45px;
+
+}
+
+
+
+.timeline-dot{
+
+width:50px;
+
+height:50px;
+
+
+
+border-radius:50%;
+
+
+
+display:grid;
+
+place-items:center;
+
+
+
+background:#170b18;
+
+
+
+border:1px solid var(--line);
+
+
+
+position:relative;
+
+z-index:1;
+
+}
+
+
+
+.timeline-card{
+
+background:var(--card);
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:22px;
+
+
+
+padding:25px;
+
+}
+
+
+
+.timeline-card>span{
+
+font-size:.7rem;
+
+
+
+color:var(--pink2);
+
+
+
+letter-spacing:2px;
+
+
+
+text-transform:uppercase;
+
+}
+
+
+
+.timeline-card h3{
+
+font-size:2rem;
+
+
+
+margin:5px 0 8px;
+
+}
+
+
+
+.fake-chat{
+
+margin-top:18px;
+
+
+
+display:flex;
+
+
+
+flex-direction:column;
+
+
+
+gap:8px;
+
+}
+
+
+
+.bubble{
+
+max-width:80%;
+
+
+
+padding:9px 13px;
+
+
+
+border-radius:15px;
+
+
+
+font-size:.78rem;
+
+}
+
+
+
+.bubble.other{
+
+align-self:flex-start;
+
+background:#211521;
+
+}
+
+
+
+.bubble.me{
+
+align-self:flex-end;
+
+background:#722b4b;
+
+color:white;
+
+}
+
+
+
+/* =========================================================
+
+STATS
+
+========================================================= */
+
+
+
+.stats-grid{
+
+display:grid;
+
+
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+
+gap:15px;
+
+}
+
+
+
+.stat-card{
+
+padding:28px 12px;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:20px;
+
+
+
+background:var(--card);
+
+
+
+text-align:center;
+
+}
+
+
+
+.stat-card b{
+
+font-size:2rem;
+
+display:block;
+
+}
+
+
+
+.stat-card strong,
+
+.stat-card span{
+
+display:block;
+
+}
+
+
+
+.stat-card span{
+
+font-size:.8rem;
+
+color:#a998a3;
+
+}
+
+
+
+/* =========================================================
+
+QUOTES
+
+========================================================= */
+
+
+
+.quote-card{
+
+max-width:780px;
+
+
+
+margin:35px auto 0;
+
+
+
+text-align:center;
+
+
+
+padding:30px;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:25px;
+
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+rgba(255,111,157,.08),
+
+rgba(255,255,255,.03)
+
+);
+
+}
+
+
+
+.quote-card p{
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.7rem;
+
+
+
+color:#f8eaf0;
+
+}
+
+
+
+.quote-card strong{
+
+color:var(--pink2);
+
+}
+
+
+
+/* =========================================================
+
+MEMORIES
+
+========================================================= */
+
+
+
+.memory-grid{
+
+display:grid;
+
+
+
+grid-template-columns:
+
+repeat(5,1fr);
+
+
+
+gap:14px;
+
+}
+
+
+
+.memory-card{
+
+position:relative;
+
+
+
+aspect-ratio:4/5;
+
+
+
+border:0;
+
+
+
+border-radius:18px;
+
+
+
+overflow:hidden;
+
+
+
+background:#160b16;
+
+
+
+padding:0;
+
+}
+
+
+
+.memory-card img{
+
+width:100%;
+
+height:100%;
+
+
+
+object-fit:cover;
+
+
+
+transition:.5s;
+
+}
+
+
+
+.memory-card:after{
+
+content:"";
+
+
+
+position:absolute;
+
+inset:45% 0 0;
+
+
+
+background:
+
+linear-gradient(
+
+transparent,
+
+rgba(0,0,0,.85)
+
+);
+
+}
+
+
+
+.memory-card:hover img{
+
+transform:scale(1.06);
+
+}
+
+
+
+.memory-label{
+
+position:absolute;
+
+
+
+bottom:12px;
+
+left:13px;
+
+
+
+z-index:1;
+
+
+
+text-align:left;
+
+}
+
+
+
+.memory-label small{
+
+color:var(--pink2);
+
+font-size:.65rem;
+
+}
+
+
+
+.memory-label b{
+
+display:block;
+
+font-size:.85rem;
+
+}
+
+
+
+/* =========================================================
+
+CHILDHOOD
+
+========================================================= */
+
+
+
+.childhood-strip{
+
+display:grid;
+
+
+
+grid-template-columns:
+
+repeat(5,1fr);
+
+
+
+gap:12px;
+
+
+
+align-items:end;
+
+}
+
+
+
+.childhood-strip img{
+
+width:100%;
+
+
+
+aspect-ratio:3/4;
+
+
+
+object-fit:cover;
+
+
+
+border-radius:18px;
+
+
+
+border:5px solid #f1e6d2;
+
+
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.35);
+
+}
+
+
+
+.childhood-strip img:nth-child(2){
+
+transform:
+
+translateY(20px)
+
+rotate(2deg);
+
+}
+
+
+
+.childhood-strip img:nth-child(4){
+
+transform:
+
+translateY(14px)
+
+rotate(-2deg);
+
+}
+
+
+
+.soft-message{
+
+margin-top:45px;
+
+
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.7rem;
+
+
+
+color:#eadde4;
+
+}
+
+
+
+/* =========================================================
+
+RECENT LOOKS
+
+========================================================= */
+
+
+
+.looks-grid{
+
+columns:4 180px;
+
+column-gap:12px;
+
+}
+
+
+
+.look{
+
+break-inside:avoid;
+
+
+
+margin-bottom:12px;
+
+
+
+position:relative;
+
+
+
+border-radius:18px;
+
+
+
+overflow:hidden;
+
+}
+
+
+
+.look img{
+
+display:block;
+
+
+
+width:100%;
+
+height:auto;
+
+
+
+transition:.5s;
+
+}
+
+
+
+.look:hover img{
+
+transform:scale(1.04);
+
+}
+
+
+
+.look span{
+
+position:absolute;
+
+
+
+bottom:10px;
+
+left:12px;
+
+
+
+background:rgba(0,0,0,.55);
+
+
+
+padding:4px 9px;
+
+
+
+border-radius:999px;
+
+
+
+font-size:.65rem;
+
+}
+
+
+
+/* =========================================================
+
+ONLINE WORLD
+
+========================================================= */
+
+
+
+.future-grid{
+
+display:grid;
+
+
+
+grid-template-columns:
+
+repeat(4,1fr);
+
+
+
+gap:14px;
+
+}
+
+
+
+.future-card{
+
+min-height:170px;
+
+
+
+border:1px solid var(--line);
+
+
+
+background:var(--card);
+
+
+
+border-radius:20px;
+
+
+
+color:white;
+
+
+
+padding:22px;
+
+
+
+text-align:left;
+
+
+
+transition:.3s;
+
+}
+
+
+
+.future-card:hover{
+
+transform:translateY(-5px);
+
+
+
+border-color:
+
+rgba(255,111,157,.4);
+
+}
+
+
+
+.future-card b,
+
+.future-card span{
+
+display:block;
+
+}
+
+
+
+.future-card b{
+
+font-size:1rem;
+
+margin-top:10px;
+
+}
+
+
+
+.future-card span{
+
+font-size:.75rem;
+
+color:#9d8c97;
+
+}
+
+
+
+.future-card:nth-child(5),
+
+.future-card:nth-child(6){
+
+grid-column:span 2;
+
+}
+
+
+
+/* =========================================================
+
+RAVE
+
+========================================================= */
+
+
+
+.rave-card{
+
+border:1px solid var(--line);
+
+
+
+border-radius:28px;
+
+
+
+background:
+
+linear-gradient(
+
+135deg,
+
+rgba(132,82,255,.1),
+
+rgba(255,111,157,.07)
+
+);
+
+
+
+padding:35px;
+
+
+
+text-align:center;
+
+}
+
+
+
+.rave-icon{
+
+font-size:4rem;
+
+}
+
+
+
+.rave-card h3{
+
+font-size:2.8rem;
+
+margin:5px;
+
+}
+
+
+
+.rave-card .watch-list{
+
+display:flex;
+
+
+
+flex-wrap:wrap;
+
+
+
+justify-content:center;
+
+
+
+gap:8px;
+
+
+
+margin:22px 0;
+
+}
+
+
+
+.watch-list span{
+
+border:1px solid var(--line);
+
+
+
+border-radius:999px;
+
+
+
+padding:7px 12px;
+
+
+
+font-size:.75rem;
+
+
+
+color:#eadde4;
+
+
+
+background:rgba(255,255,255,.035);
+
+}
+
+
+
+.rave-status{
+
+min-height:35px;
+
+
+
+color:var(--pink2);
+
+
+
+margin-top:14px;
+
+}
+
+
+
+/* =========================================================
+
+PICKUP LINE GAME
+
+========================================================= */
+
+
+
+.pickup-section{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+
+.pickup-glow{
+
+position:absolute;
+
+
+
+width:500px;
+
+height:500px;
+
+
+
+left:50%;
+
+top:50%;
+
+
+
+transform:translate(-50%,-50%);
+
+
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(255,70,140,.15),
+
+transparent 65%
+
+);
+
+}
+
+
+
+.pickup-box{
+
+position:relative;
+
+
+
+padding:45px 25px;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:28px;
+
+
+
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,111,157,.09),
+
+rgba(255,255,255,.03)
+
+);
+
+
+
+text-align:center;
+
+
+
+overflow:hidden;
+
+}
+
+
+
+.pickup-levels{
+
+display:flex;
+
+
+
+justify-content:center;
+
+
+
+flex-wrap:wrap;
+
+
+
+gap:10px;
+
+
+
+margin:25px 0;
+
+}
+
+
+
+.level-btn{
+
+background:rgba(255,255,255,.04);
+
+
+
+color:white;
+
+
+
+border:1px solid var(--line);
+
+}
+
+
+
+.level-btn.active{
+
+background:
+
+linear-gradient(
+
+135deg,
+
+#ff6f9d,
+
+#ff9fbd
+
+);
+
+
+
+color:#2b0917;
+
+
+
+border-color:transparent;
+
+
+
+box-shadow:
+
+0 8px 25px
+
+rgba(255,90,140,.2);
+
+}
+
+
+
+.pickup-level-description{
+
+min-height:28px;
+
+
+
+font-size:.8rem;
+
+
+
+color:#a998a3;
+
+
+
+margin-bottom:15px;
+
+}
+
+
+
+.pickup-text{
+
+font-family:Georgia,serif;
+
+
+
+font-size:clamp(1.7rem,4vw,2.5rem);
+
+
+
+color:white;
+
+
+
+min-height:150px;
+
+
+
+display:grid;
+
+
+
+place-items:center;
+
+
+
+padding:20px;
+
+
+
+transition:.3s;
+
+}
+
+
+
+.pickup-text.show{
+
+animation:
+
+pickupAppear .55s ease;
+
+}
+
+
+
+@keyframes pickupAppear{
+
+from{
+
+opacity:0;
+
+transform:
+
+scale(.92)
+
+translateY(15px);
+
+}
+
+
+
+to{
+
+opacity:1;
+
+transform:
+
+scale(1)
+
+translateY(0);
+
+}
+
+}
+
+
+
+.pickup-counter{
+
+font-size:.7rem;
+
+
+
+color:#806e79;
+
+
+
+margin-top:15px;
+
+}
+
+
+
+/* =========================================================
+
+FUTURE
+
+========================================================= */
+
+
+
+.capsule{
+
+margin-top:30px;
+
+}
+
+
+
+.capsule-inner{
+
+padding:35px;
+
+
+
+border:1px solid
+
+rgba(255,215,140,.2);
+
+
+
+border-radius:25px;
+
+
+
+background:
+
+linear-gradient(
+
+145deg,
+
+rgba(255,215,140,.08),
+
+rgba(255,255,255,.03)
+
+);
+
+
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.4rem;
+
+}
+
+
+
+.capsule-inner p{
+
+margin-bottom:10px;
+
+}
+
+
+
+.capsule-inner strong{
+
+color:var(--gold);
+
+}
+
+
+
+/* =========================================================
+
+PROPOSAL
+
+========================================================= */
+
+
+
+.proposal-section{
+
+min-height:100svh;
+
+
+
+overflow:hidden;
+
+}
+
+
+
+.proposal-bg{
+
+position:absolute;
+
+
+
+inset:0;
+
+
+
+background:
+
+radial-gradient(
+
+circle at 50% 50%,
+
+rgba(255,55,120,.18),
+
+transparent 45%
+
+);
+
+}
+
+
+
+.proposal-card{
+
+padding:45px 25px;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:30px;
+
+
+
+background:rgba(255,255,255,.045);
+
+}
+
+
+
+.ring{
+
+font-size:4rem;
+
+
+
+animation:
+
+floatRing 2s
+
+ease-in-out
+
+infinite;
+
+}
+
+
+
+@keyframes floatRing{
+
+50%{
+
+transform:
+
+translateY(-8px)
+
+rotate(5deg);
+
+}
+
+}
+
+
+
+.proposal-card h3{
+
+font-size:
+
+clamp(
+
+3rem,
+
+8vw,
+
+5.5rem
+
+);
+
+
+
+margin:8px 0;
+
+}
+
+
+
+.proposal-buttons{
+
+height:110px;
+
+
+
+position:relative;
+
+
+
+display:flex;
+
+
+
+justify-content:center;
+
+
+
+align-items:center;
+
+
+
+gap:18px;
+
+
+
+margin-top:20px;
+
+}
+
+
+
+.yes-btn{
+
+background:#ff6f9d;
+
+
+
+color:#260916;
+
+
+
+padding:15px 28px;
+
+
+
+border:0;
+
+}
+
+
+
+.no-btn{
+
+background:#1b111b;
+
+
+
+color:#fff;
+
+
+
+border:1px solid var(--line);
+
+
+
+padding:13px 23px;
+
+}
+
+
+
+.no-message{
+
+height:30px;
+
+
+
+font-size:.75rem;
+
+
+
+color:var(--pink2);
+
+}
+
+
+
+/* =========================================================
+
+LOVE LETTER
+
+========================================================= */
+
+
+
+.letter{
+
+background:#f7eee7;
+
+
+
+color:#392630;
+
+
+
+padding:
+
+clamp(
+
+30px,
+
+6vw,
+
+70px
+
+);
+
+
+
+border-radius:3px;
+
+
+
+box-shadow:
+
+0 25px 80px
+
+rgba(0,0,0,.35);
+
+
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.35rem;
+
+
+
+line-height:1.65;
+
+}
+
+
+
+.letter p{
+
+color:#49333c;
+
+
+
+margin-bottom:15px;
+
+}
+
+
+
+.letter .big-line{
+
+font-size:2.3rem;
+
+
+
+color:#9f315e;
+
+}
+
+
+
+.signature{
+
+text-align:right;
+
+
+
+margin-top:35px;
+
+
+
+font-size:1.7rem!important;
+
+
+
+color:#8c3157!important;
+
+}
+
+
+
+/* =========================================================
+
+FINALE
+
+========================================================= */
+
+
+
+.finale{
+
+min-height:100svh;
+
+
+
+background:
+
+radial-gradient(
+
+circle at center,
+
+rgba(255,90,145,.13),
+
+transparent 55%
+
+);
+
+}
+
+
+
+.final-heart{
+
+font-size:4rem;
+
+
+
+animation:
+
+pulse 1.7s infinite;
+
+}
+
+
+
+.finale h2{
+
+font-size:
+
+clamp(
+
+3.5rem,
+
+9vw,
+
+7rem
+
+);
+
+
+
+margin:12px 0 20px;
+
+}
+
+
+
+.final-text{
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.6rem;
+
+}
+
+
+
+.beginning{
+
+font-size:1.2rem;
+
+
+
+color:var(--pink2);
+
+
+
+margin:28px 0;
+
+}
+
+
+
+/* =========================================================
+
+MODALS
+
+========================================================= */
+
+
+
+.modal,
+
+.mini-modal{
+
+position:fixed;
+
+
+
+inset:0;
+
+
+
+z-index:3000;
+
+
+
+display:none;
+
+
+
+place-items:center;
+
+
+
+padding:20px;
+
+}
+
+
+
+.modal.open,
+
+.mini-modal.open{
+
+display:grid;
+
+}
+
+
+
+.modal-backdrop{
+
+position:absolute;
+
+
+
+inset:0;
+
+
+
+background:rgba(0,0,0,.85);
+
+}
+
+
+
+.modal-content{
+
+position:relative;
+
+
+
+width:min(900px,100%);
+
+
+
+max-height:90vh;
+
+
+
+overflow:auto;
+
+
+
+background:#120917;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:25px;
+
+
+
+z-index:1;
+
+}
+
+
+
+.modal-content img{
+
+width:100%;
+
+
+
+max-height:60vh;
+
+
+
+object-fit:contain;
+
+
+
+background:#08040a;
+
+}
+
+
+
+.modal-copy{
+
+padding:25px;
+
+}
+
+
+
+.modal-copy span{
+
+font-size:.7rem;
+
+
+
+color:var(--pink2);
+
+
+
+letter-spacing:2px;
+
+
+
+text-transform:uppercase;
+
+}
+
+
+
+.modal-copy h3{
+
+font-size:2.7rem;
+
+
+
+margin:4px 0;
+
+}
+
+
+
+.close-modal{
+
+position:absolute;
+
+
+
+right:12px;
+
+top:10px;
+
+
+
+width:38px;
+
+height:38px;
+
+
+
+border:0;
+
+
+
+border-radius:50%;
+
+
+
+background:rgba(0,0,0,.55);
+
+
+
+color:white;
+
+
+
+font-size:1.6rem;
+
+
+
+z-index:3;
+
+}
+
+
+
+.mini-card{
+
+position:relative;
+
+
+
+z-index:1;
+
+
+
+width:min(440px,100%);
+
+
+
+padding:45px 30px;
+
+
+
+background:#160b17;
+
+
+
+border:1px solid var(--line);
+
+
+
+border-radius:25px;
+
+
+
+text-align:center;
+
+}
+
+
+
+.mini-card>div{
+
+font-size:3rem;
+
+}
+
+
+
+.mini-card p{
+
+font-family:Georgia,serif;
+
+
+
+font-size:1.8rem;
+
+
+
+color:white;
+
+
+
+margin-top:10px;
+
+}
+
+
+
+/* =========================================================
+
+REVEAL
+
+========================================================= */
+
+
+
+.reveal{
+
+opacity:0;
+
+
+
+transform:
+
+translateY(25px);
+
+
+
+transition:
+
+opacity .7s ease,
+
+transform .7s ease;
+
+}
+
+
+
+.reveal.visible{
+
+opacity:1;
+
+
+
+transform:none;
+
+}
+
+
+
+/* =========================================================
+
+CONFETTI
+
+========================================================= */
+
+
+
+.confetti{
+
+position:fixed;
+
+
+
+width:9px;
+
+height:15px;
+
+
+
+z-index:5000;
+
+
+
+pointer-events:none;
+
+
+
+animation:
+
+confettiFall
+
+2.5s
+
+ease-out
+
+forwards;
+
+}
+
+
+
+@keyframes confettiFall{
+
+to{
+
+transform:
+
+translate(var(--x),100vh)
+
+rotate(720deg);
+
+
+
+opacity:0;
+
+}
+
+}
+
+
+
+/* =========================================================
+
+HEART POP
+
+========================================================= */
+
+
+
+.love-pop{
+
+position:fixed;
+
+
+
+z-index:4000;
+
+
+
+pointer-events:none;
+
+
+
+font-size:1.4rem;
+
+
+
+animation:
+
+lovePop
+
+1.2s
+
+ease-out
+
+forwards;
+
+}
+
+
+
+@keyframes lovePop{
+
+to{
+
+transform:
+
+translateY(-90px)
+
+scale(1.4);
+
+
+
+opacity:0;
+
+}
+
+}
+
+
+
+/* =========================================================
+
+MOBILE
+
+========================================================= */
+
+
+
+@media(max-width:800px){
+
+
+
+.section{
+
+padding:85px 0;
+
+}
+
+
+
+.stats-grid{
+
+grid-template-columns:
+
+1fr 1fr;
+
+}
+
+
+
+.memory-grid{
+
+grid-template-columns:
+
+repeat(2,1fr);
+
+}
+
+
+
+.childhood-strip{
+
+grid-template-columns:
+
+repeat(3,1fr);
+
+}
+
+
+
+.childhood-strip img:nth-child(4),
+
+.childhood-strip img:nth-child(5){
+
+display:none;
+
+}
+
+
+
+.future-grid{
+
+grid-template-columns:
+
+1fr 1fr;
+
+}
+
+
+
+.future-card:nth-child(5),
+
+.future-card:nth-child(6){
+
+grid-column:span 1;
+
+}
+
+
+
+.timeline-item{
+
+grid-template-columns:
+
+42px 1fr;
+
+}
+
+
+
+.timeline-dot{
+
+width:42px;
+
+height:42px;
+
+}
+
+
+
+.timeline:before{
+
+left:20px;
+
+}
+
+}
+
+
+
+@media(max-width:520px){
+
+
+
+.hero-title{
+
+font-size:3.4rem;
+
+}
+
+
+
+.section{
+
+padding:75px 0;
+
+}
+
+
+
+.section-heading{
+
+margin-bottom:35px;
+
+}
+
+
+
+.memory-grid{
+
+gap:9px;
+
+}
+
+
+
+.memory-card{
+
+border-radius:13px;
+
+}
+
+
+
+.childhood-strip{
+
+gap:7px;
+
+}
+
+
+
+.childhood-strip img{
+
+border-width:3px;
+
+border-radius:10px;
+
+}
+
+
+
+.looks-grid{
+
+columns:
+
+2 130px;
+
+}
+
+
+
+.future-grid{
+
+gap:9px;
+
+}
+
+
+
+.future-card{
+
+min-height:145px;
+
+padding:17px;
+
+}
+
+
+
+.pickup-box{
+
+padding:35px 15px;
+
+}
+
+
+
+.pickup-levels{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+
+
+.level-btn{
+
+width:100%;
+
+}
+
+
+
+.pickup-text{
+
+font-size:1.55rem;
+
+min-height:180px;
+
+}
+
+
+
+.proposal-card{
+
+padding:35px 15px;
+
+}
+
+
+
+.proposal-buttons{
+
+height:130px;
+
+}
+
+
+
+.no-btn{
+
+position:absolute;
+
+}
+
+
+
+.letter{
+
+font-size:1.2rem;
+
+
+
+padding:28px 22px;
+
+}
+
+
+
+.letter .big-line{
+
+font-size:2rem;
+
+}
+
+
+
+.pickup-counter{
+
+margin-top:5px;
+
+}
+
+}
+
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- =========================================================
+
+BACKGROUND
+
+========================================================= -->
+
+
+
+<div id="stars"></div>
+
+
+
+<div
+
+class="floating-hearts"
+
+id="floatingHearts">
+
+</div>
+
+
+
+<!-- MUSIC BUTTON -->
+
+
+
+<button
+
+class="music-btn"
+
+id="musicBtn"
+
+aria-label="Music">
+
+🎵
+
+</button>
+
+
+
+<!--
+
+IMPORTANT:
+
+
+
+Put your music here:
+
+
+
+assets/music.mp3
+
+
+
+You can replace music.mp3 with your own song.
+
+-->
+
+
+
+<audio
+
+id="bgMusic"
+
+loop>
+
+
+
+<source
+
+src="assets/music.mp3"
+
+type="audio/mpeg">
+
+
+
+</audio>
+
+
+
+
+
+<!-- =========================================================
+
+INTRO GATE
+
+========================================================= -->
+
+
+
+<div
+
+class="gate"
+
+id="gate">
+
+
+
+<div class="gate-card">
+
+
+
+<div class="tiny-heart">
+
+♡
+
+</div>
+
+
+
+<p class="eyebrow">
+
+A tiny universe made for one person
+
+</p>
+
+
+
+<h1>
+
+Hey,
+
+<span>Birthday Girl</span>
+
+❤️
+
+</h1>
+
+
+
+<p class="gate-copy">
+
+Before you enter...
+
+who are you? 😌
+
+</p>
+
+
+
+<input
+
+id="nicknameInput"
+
+placeholder="..."
+
+autocomplete="off">
+
+
+
+<button
+
+class="primary-btn"
+
+id="enterBtn">
+
+
+
+Open My Heart ✨
+
+
+
+</button>
+
+
+
+<p
+
+class="hint"
+
+id="gateHint">
+
+
+
+Hint:
+
+your pet name and a animal name. 👀
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- =========================================================
+
+MAIN WEBSITE
+
+========================================================= -->
+
+
+
+<main
+
+id="main"
+
+class="hidden">
+
+
+
+
+
+<!-- =========================================================
+
+HERO
+
+========================================================= -->
+
+
+
+<section class="hero section">
+
+
+
+<div class="hero-glow"></div>
+
+
+
+<div class="container center">
+
+
+
+<p class="eyebrow reveal">
+
+A birthday story about us
+
+</p>
+
+
+
+<h1 class="hero-title reveal">
+
+
+
+Happy Birthday,
+
+
+
+<br>
+
+
+
+<span>
+
+My Favourite Person
+
+</span>
+
+
+
+❤️
+
+
+
+</h1>
+
+
+
+<p class="hero-sub reveal">
+
+
+
+I could have just said
+
+"Happy Birthday"...
+
+
+
+<br>
+
+
+
+but where's the fun in that?
+
+
+
+</p>
+
+
+
+<button
+
+class="primary-btn reveal"
+
+id="startBtn">
+
+
+
+Start Our Story ✨
+
+
+
+</button>
+
+
+
+<div class="scroll-note reveal">
+
+
+
+scroll slowly...
+
+there are memories hiding here ↓
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+FIRST CHAPTER
+
+========================================================= -->
+
+
+
+<section class="section soft">
+
+
+
+<div class="container narrow center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 01
+
+</p>
+
+
+
+<h2>
+
+It started with
+
+<span>academics</span>
+
+🧪
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Not love at first sight.
+
+
+
+Not a movie scene.
+
+
+
+Just two college students talking
+
+about academics in a physics lab in 2023.
+
+
+
+</p>
+
+
+
+<div class="date-pill">
+
+
+
+2023 • First Year • Physics Lab 🧪
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+TIMELINE
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading reveal">
+
+
+
+<p class="eyebrow">
+
+Our timeline
+
+</p>
+
+
+
+<h2>
+
+
+
+From classmates to
+
+<span>
+
+my favourite person
+
+</span>
+
+
+
+</h2>
+
+
+
+</div>
+
+
+
+
+
+<div class="timeline">
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+🧪
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+2023
+
+</span>
+
+
+
+<h3>
+
+The Physics Lab
+
+</h3>
+
+
+
+<p>
+
+
+
+Our first proper conversation started
+
+with academics.
+
+
+
+Very innocent.
+
+
+
+Very normal.
+
+
+
+And completely unaware
+
+of what it was starting.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+📱
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Then...
+
+</span>
+
+
+
+<h3>
+
+You got my number
+
+</h3>
+
+
+
+<p>
+
+
+
+One conversation became more conversations.
+
+
+
+A simple number became a thousand memories.
+
+
+
+</p>
+
+
+
+
+
+<div class="fake-chat">
+
+
+
+<div class="bubble other">
+
+Let's study? 👀
+
+</div>
+
+
+
+<div class="bubble me">
+
+Okay.
+
+</div>
+
+
+
+<div class="bubble other">
+
+Also...
+
+Hardik is overrated. 😭
+
+</div>
+
+
+
+<div class="bubble me">
+
+Excuse me?! 😭
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+🏏
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+The Great Debate
+
+</span>
+
+
+
+<h3>
+
+Dhoni vs Hardik
+
+</h3>
+
+
+
+<p>
+
+
+
+She chose Hardik Pandya.
+
+
+
+I chose Dhoni.
+
+
+
+And apparently this was enough
+
+to create an entire cricket war.
+
+
+
+😂
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+📚
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Growing closer
+
+</span>
+
+
+
+<h3>
+
+Study partners
+
+</h3>
+
+
+
+<p>
+
+
+
+We studied together for exams,
+
+helped each other,
+
+stressed together and somehow
+
+made studying feel less painful.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+😏
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Uh oh...
+
+</span>
+
+
+
+<h3>
+
+The pickup-line era
+
+</h3>
+
+
+
+<p>
+
+
+
+We started playing pickup-line games.
+
+
+
+Technically a game.
+
+
+
+Emotionally...
+
+
+
+definitely something else.
+
+
+
+👀❤️
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+✨
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+December
+
+</span>
+
+
+
+<h3>
+
+The spark
+
+</h3>
+
+
+
+<p>
+
+
+
+Somewhere in December,
+
+friendship started feeling different.
+
+
+
+We got closer,
+
+the flirting got real,
+
+and the story changed.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+🎮
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Our world
+
+</span>
+
+
+
+<h3>
+
+Games, Rave & late nights
+
+</h3>
+
+
+
+<p>
+
+
+
+Carrom, cricket,
+
+pickup-line games,
+
+watching YouTube songs together,
+
+watching <b>Kadhaipoma</b>
+
+and other series on Rave...
+
+
+
+distance never stopped us
+
+from spending time together.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+💼
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Placement season
+
+</span>
+
+
+
+<h3>
+
+The same-company dream
+
+</h3>
+
+
+
+<p>
+
+
+
+We prepared hard for placements
+
+because we wanted to be in the same company.
+
+
+
+She made it.
+
+
+
+I didn't.
+
+
+
+Life changed the plan,
+
+but it didn't change us.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+<article class="timeline-item reveal">
+
+
+
+<div class="timeline-dot">
+
+🌍
+
+</div>
+
+
+
+<div class="timeline-card">
+
+
+
+<span>
+
+Now
+
+</span>
+
+
+
+<h3>
+
+Long distance, same love
+
+</h3>
+
+
+
+<p>
+
+
+
+Different places.
+
+
+
+Different routines.
+
+
+
+Still the same two idiots
+
+choosing each other.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</article>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+RELATIONSHIP ANALYSIS
+
+========================================================= -->
+
+
+
+<section class="section soft">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 02
+
+</p>
+
+
+
+<h2>
+
+
+
+Our relationship is basically
+
+<span>this</span>
+
+
+
+😂
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+A completely scientific analysis.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="stats-grid rivalry-grid">
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>😂</b>
+
+
+
+<strong>
+
+Laughs
+
+</strong>
+
+
+
+<span>
+
+Unlimited
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>😤</b>
+
+
+
+<strong>
+
+Fights
+
+</strong>
+
+
+
+<span>
+
+Let's not count
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>🏏</b>
+
+
+
+<strong>
+
+Cricket wars
+
+</strong>
+
+
+
+<span>
+
+Dhoni vs Hardik
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>❤️</b>
+
+
+
+<strong>
+
+Love
+
+</strong>
+
+
+
+<span>
+
+Still increasing
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="quote-card reveal">
+
+
+
+<p>
+
+
+
+"We're not perfect.
+
+
+
+We're a little mad,
+
+a little dramatic,
+
+sometimes annoying,
+
+and ridiculously romantic."
+
+
+
+</p>
+
+
+
+<strong>
+
+But we're us. ❤️
+
+</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+CRICKET WAR
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container narrow">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+The legendary rivalry
+
+</p>
+
+
+
+<h2>
+
+
+
+🏏 Dhoni vs Hardik
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+One of the biggest debates
+
+in our relationship.
+
+
+
+Click the button and prepare
+
+for unnecessary arguments.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="stats-grid rivalry-grid">
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>🧢</b>
+
+
+
+<strong>
+
+Aris side
+
+</strong>
+
+
+
+<span>
+
+MS Dhoni ❤️
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<div class="stat-card reveal">
+
+
+
+<b>🏏</b>
+
+
+
+<strong>
+Swee side
+
+</strong>
+
+
+
+<span>
+
+Hardik Pandya 😂
+
+</span>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<div class="quote-card reveal">
+
+
+
+<p id="cricketText">
+
+
+
+I still believe Dhoni is better.
+
+
+
+This is not a discussion. 😌
+
+
+
+</p>
+
+
+
+<button
+
+class="secondary-btn"
+
+id="cricketBtn">
+
+
+
+Start another cricket fight 🏏
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+10 MEMORIES
+
+========================================================= -->
+
+
+
+<section
+
+class="section soft"
+
+id="memories">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 03
+
+</p>
+
+
+
+<h2>
+
+
+
+10 little pieces of
+
+<span>us</span>
+
+
+
+📸
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+I left spaces for our photos.
+
+
+
+Replace the files with
+
+your real memories.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div
+
+class="memory-grid"
+
+id="memoryGrid">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+CHILDHOOD
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 04
+
+</p>
+
+
+
+<h2>
+
+
+
+Before she became
+
+<span>my Swee</span>
+
+
+
+👶
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Little you had no idea
+
+what was coming. 😂❤️
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div
+
+class="childhood-strip"
+
+id="childhoodGrid">
+
+
+
+</div>
+
+
+
+
+
+<div class="center reveal">
+
+
+
+<p class="soft-message">
+
+
+
+You were beautiful before I knew you.
+
+
+
+You had a whole story before
+
+I became part of it.
+
+
+
+I'm just grateful I got a chapter too. ❤️
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+RECENT LOOKS
+
+========================================================= -->
+
+
+
+<section class="section soft">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 05
+
+</p>
+
+
+
+<h2>
+
+
+
+The girl I keep
+
+<span>falling for</span>
+
+
+
+👸
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Replace these placeholders
+
+with your favourite recent photos.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div
+
+class="looks-grid"
+
+id="looksGrid">
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+ONLINE WORLD
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 06
+
+</p>
+
+
+
+<h2>
+
+
+
+Our little
+
+<span>online world</span>
+
+
+
+🎮
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+When we couldn't be together physically,
+
+we still found ways to be together.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="future-grid">
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Carrom nights: competing like a championship depends on it, followed by suspicious cheating accusations. 😂">
+
+
+
+🟤
+
+
+
+<b>
+
+Carrom
+
+</b>
+
+
+
+<span>
+
+Competitive mode ON
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Cricket games: because apparently arguing about Dhoni and Hardik wasn't enough. 🏏">
+
+
+
+🏏
+
+
+
+<b>
+
+Online Cricket
+
+</b>
+
+
+
+<span>
+
+One more match?
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Pickup-line games: the game that was definitely just a game... until it wasn't. 😏❤️">
+
+
+
+😏
+
+
+
+<b>
+
+Pickup Lines
+
+</b>
+
+
+
+<span>
+
+Totally innocent. Sure.
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Rave nights: watching YouTube songs together, sharing reactions and feeling a little less far away. 🎵">
+
+
+
+🎵
+
+
+
+<b>
+
+Rave
+
+</b>
+
+
+
+<span>
+
+Our virtual room
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Kadhaipoma and other YouTube series: pressing play together and turning a normal night into our own little date. 📺❤️">
+
+
+
+📺
+
+
+
+<b>
+
+Kadhaipoma
+
+</b>
+
+
+
+<span>
+
+Press play together
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Even when there was nothing special to watch, being on Rave together was special because it was us. 🫶">
+
+
+
+🫶
+
+
+
+<b>
+
+Just Being Together
+
+</b>
+
+
+
+<span>
+
+Even from far away
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+RAVE SECTION
+
+========================================================= -->
+
+
+
+<section class="section soft">
+
+
+
+<div class="container narrow">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Our Rave nights
+
+</p>
+
+
+
+<h2>
+
+
+
+Press play,
+
+<span>stay together</span>
+
+
+
+🎵
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Some of our dates didn't need
+
+restaurants or travel.
+
+
+
+Just two screens,
+
+Rave and us.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="rave-card reveal">
+
+
+
+<div class="rave-icon">
+
+🎬
+
+</div>
+
+
+
+<h3>
+
+Rave ❤️
+
+</h3>
+
+
+
+<p>
+
+Our little long-distance cinema.
+
+</p>
+
+
+
+
+
+<div class="watch-list">
+
+
+
+<span>
+
+🎵 YouTube songs
+
+</span>
+
+
+
+<span>
+
+📺 Kadhaipoma
+
+</span>
+
+
+
+<span>
+
+😂 Random videos
+
+</span>
+
+
+
+<span>
+
+🌙 Late-night watching
+
+</span>
+
+
+
+<span>
+
+🫶 Just us
+
+</span>
+
+
+
+</div>
+
+
+
+
+
+<button
+
+class="primary-btn"
+
+id="raveBtn">
+
+
+
+Press Play Together ▶
+
+
+
+</button>
+
+
+
+
+
+<p
+
+class="rave-status"
+
+id="raveStatus">
+
+
+
+Waiting for my favourite person...
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+🔥 PICKUP LINE GAME
+
+========================================================= -->
+
+
+
+<section class="section pickup-section">
+
+
+
+<div class="pickup-glow"></div>
+
+
+
+<div class="container narrow">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 07
+
+</p>
+
+
+
+<h2>
+
+
+
+The game that was definitely
+
+<span>"just a game"</span>
+
+
+
+😏
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+We started with pickup lines.
+
+
+
+So obviously I had to bring
+
+them back for your birthday.
+
+
+
+Choose your danger level. 👀
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="pickup-box reveal">
+
+
+
+<p class="eyebrow">
+
+Choose your level
+
+</p>
+
+
+
+
+
+<div class="pickup-levels">
+
+
+
+<button
+
+class="level-btn active"
+
+data-level="sweet">
+
+
+
+❤️ Sweet
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="level-btn"
+
+data-level="flirty">
+
+
+
+😏 Flirty
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="level-btn"
+
+data-level="dangerous">
+
+
+
+🔥 Dangerous
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<p
+
+class="pickup-level-description"
+
+id="pickupDescription">
+
+
+
+Cute enough to make you smile.
+
+
+
+</p>
+
+
+
+
+
+<div
+
+class="pickup-text"
+
+id="pickupText">
+
+
+
+Tap the button.
+
+
+
+Don't blame me for what happens next. 👀❤️
+
+
+
+</div>
+
+
+
+
+
+<button
+
+class="primary-btn"
+
+id="pickupBtn">
+
+
+
+Give me a pickup line 😏
+
+
+
+</button>
+
+
+
+
+
+<div
+
+class="pickup-counter"
+
+id="pickupCounter">
+
+
+
+0 lines unlocked
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+PLACEMENT STORY
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container narrow">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 08
+
+</p>
+
+
+
+<h2>
+
+
+
+The placement dream
+
+<span>we shared</span>
+
+
+
+💼
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+This chapter didn't go exactly
+
+how we planned.
+
+
+
+But it made our story stronger.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="quote-card reveal">
+
+
+
+<p>
+
+
+
+We prepared together.
+
+
+
+We dreamed of joining
+
+the same company.
+
+
+
+You made it.
+
+
+
+I didn't.
+
+
+
+</p>
+
+
+
+
+
+<p>
+
+
+
+And yes, it hurt.
+
+
+
+</p>
+
+
+
+
+
+<p>
+
+
+
+But one interview could change
+
+a job opportunity.
+
+
+
+It couldn't change
+
+what you mean to me.
+
+
+
+</p>
+
+
+
+
+
+<strong>
+
+
+
+The plan changed.
+
+
+
+We didn't. ❤️
+
+
+
+</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+FUTURE
+
+========================================================= -->
+
+
+
+<section class="section soft">
+
+
+
+<div class="container">
+
+
+
+<div class="section-heading center reveal">
+
+
+
+<p class="eyebrow">
+
+Chapter 09
+
+</p>
+
+
+
+<h2>
+
+
+
+Our future,
+
+<span>just us</span>
+
+
+
+🌍
+
+
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Maybe life didn't follow the plan.
+
+
+
+We can still make our own.
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+
+
+<div class="future-grid">
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Travel somewhere we've never been and get completely lost together. 🌍">
+
+
+
+🌍
+
+
+
+<b>
+
+Travel
+
+</b>
+
+
+
+<span>
+
+Somewhere new
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Close this long distance and finally spend ordinary days together. 🫶">
+
+
+
+📍
+
+
+
+<b>
+
+Close the distance
+
+</b>
+
+
+
+<span>
+
+The one I want most
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Play carrom and cricket sitting next to each other instead of through a screen. 🎮">
+
+
+
+🎮
+
+
+
+<b>
+
+Games together
+
+</b>
+
+
+
+<span>
+
+Same room, finally
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Have random late-night food dates and talk until we forget the time. 🍜">
+
+
+
+🍜
+
+
+
+<b>
+
+Late nights
+
+</b>
+
+
+
+<span>
+
+Our kind of date
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Build a peaceful little life where even boring days feel good because you're there. 🏠">
+
+
+
+🏠
+
+
+
+<b>
+
+Our little home
+
+</b>
+
+
+
+<span>
+
+Just us
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Take thousands more photos and argue about which one is the best. 📸">
+
+
+
+📸
+
+
+
+<b>
+
+More memories
+
+</b>
+
+
+
+<span>
+
+Way too many photos
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Keep annoying each other for an unreasonable number of years. 😂">
+
+
+
+😂
+
+
+
+<b>
+
+Keep being us
+
+</b>
+
+
+
+<span>
+
+Forever, unfortunately
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="future-card reveal"
+
+data-future="Grow old, look back at this website and laugh at how young and mad we were. 👴👵">
+
+
+
+👴👵
+
+
+
+<b>
+
+Grow old
+
+</b>
+
+
+
+<span>
+
+Still choosing you
+
+</span>
+
+
+
+</button>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+TIME CAPSULE
+
+========================================================= -->
+
+
+
+<section class="section">
+
+
+
+<div class="container narrow center">
+
+
+
+<p class="eyebrow">
+
+A message for future us
+
+</p>
+
+
+
+<h2>
+
+🔒 Time
+
+<span>capsule</span>
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+Open this when you want
+
+to see what we wished for.
+
+
+
+</p>
+
+
+
+
+
+<button
+
+class="primary-btn reveal"
+
+id="capsuleBtn">
+
+
+
+Open in 2030 🕰️
+
+
+
+</button>
+
+
+
+
+
+<div
+
+class="capsule hidden"
+
+id="capsule">
+
+
+
+<div class="capsule-inner">
+
+
+
+<p>
+
+Hey, future us...
+
+</p>
+
+
+
+<p>
+
+This website was made
+
+for her birthday in 2026.
+
+</p>
+
+
+
+<p>
+
+We were young.
+
+
+
+We were crazy.
+
+
+
+We fought.
+
+
+
+We laughed.
+
+
+
+We loved.
+
+</p>
+
+
+
+<p>
+
+If you're reading this years later,
+
+I hope we're still doing all of that —
+
+together.
+
+</p>
+
+
+
+<strong>
+
+
+
+From us,
+
+back when the distance
+
+was just another chapter. ❤️
+
+
+
+</strong>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+MARRIAGE PROPOSAL
+
+========================================================= -->
+
+
+
+<section class="section proposal-section">
+
+
+
+<div class="proposal-bg"></div>
+
+
+
+<div class="container narrow center">
+
+
+
+<p class="eyebrow">
+
+Final level
+
+</p>
+
+
+
+<h2>
+
+🚨 One extremely important question
+
+</h2>
+
+
+
+<p class="lead">
+
+
+
+You've survived cricket debates,
+
+pickup lines and long distance.
+
+
+
+Now...
+
+
+
+</p>
+
+
+
+
+
+<div class="proposal-card reveal">
+
+
+
+<div class="ring">
+
+💍
+
+</div>
+
+
+
+<h3>
+
+Will you marry me?
+
+</h3>
+
+
+
+<p>
+
+Choose wisely.
+
+
+
+One button has commitment issues. 😌
+
+</p>
+
+
+
+
+
+<div
+
+class="proposal-buttons"
+
+id="proposalArea">
+
+
+
+<button
+
+class="yes-btn"
+
+id="yesBtn">
+
+
+
+YES ❤️
+
+
+
+</button>
+
+
+
+
+
+<button
+
+class="no-btn"
+
+id="noBtn">
+
+
+
+NO 😈
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+<p
+
+class="no-message"
+
+id="noMessage">
+
+
+
+</p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+LOVE LETTER
+
+========================================================= -->
+
+
+
+<section
+class="section soft hidden"
+id="letterSection">
+
+<div class="container narrow">
+
+<div class="section-heading center">
+
+<p class="eyebrow">
+After the game...
+</p>
+
+<h2>
+For you,
+<span>from me</span>
+
+💌
+</h2>
+
+</div>
+
+
+<div class="letter reveal">
+
+<p>
+From an innocent glance across a physics lab table...
+</p>
+
+<p>
+to the nervousness of waiting for your first text...
+</p>
+
+<p>
+to silly late-night arguments over cricket teams...
+</p>
+
+<p>
+to sharing the stress of notes, exams, and tired study sessions...
+</p>
+
+<p>
+to teasing you with cheesy lines just to see you blush...
+</p>
+
+<p>
+to competitive carrom matches where neither of us wanted to lose...
+</p>
+
+<p>
+to sharing earplugs and synchronized screens on Rave watching <b>Kadhaipoma</b>...
+</p>
+
+<p>
+to that quiet December when our friendship quietly turned into something unforgettable...
+</p>
+
+<p>
+to dreaming of walking into the same office together...
+</p>
+
+<p>
+to celebrating your big achievement while finding my own way...
+</p>
+
+<p>
+to counting down days and miles across this long distance...
+</p>
+
+<p>
+We've built a whole world out of simple, everyday moments.
+</p>
+
+<p>
+We've shared tears.
+
+We've held grudges.
+
+We've made each other crazy.
+
+We've fallen in love all over again.
+</p>
+
+<p>
+And through every high, low, and quiet pause in between...
+</p>
+
+<p class="big-line">
+You are still my home. ❤️
+</p>
+
+<p>
+I never needed a fairytale without flaws.
+</p>
+
+<p>
+I just wanted the messy, beautiful reality of <strong>you and me</strong>.
+</p>
+
+<p>
+If the universe gave me a million chances to start over, I’d still walk into that lab and look for you.
+</p>
+
+<p>
+Because every step, every detour, and every hurdle was worth finding you at the end of it.
+</p>
+
+<p>
+No matter where our paths lead or how far the miles stretch, only one thing matters:
+</p>
+
+<p>
+<strong>
+always waking up and choosing you.
+</strong>
+</p>
+
+<p class="signature">
+
+Happy Birthday,
+my Swee.
+
+<br>
+
+My Eruma. ❤️
+
+<br>
+
+Forever and always yours.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- =========================================================
+
+FINALE
+
+========================================================= -->
+
+
+
+<section class="finale section">
+
+
+
+<div class="container center">
+
+
+
+<div class="final-heart">
+
+❤️
+
+</div>
+
+
+
+<p class="eyebrow">
+
+And finally...
+
+</p>
+
+
+
+<h2>
+
+
+
+Happy Birthday,
+
+
+
+<br>
+
+
+
+<span>
+
+My Love
+
+</span>
+
+
+
+🎂
+
+
+
+</h2>
+
+
+
+
+
+<p class="final-text">
+
+
+You turned ordinary college days into the best part of my life, and even with the distance between us, you’re still the first and last thing on my mind every single day.
+
+I know I haven’t always been easy to deal with. I’m truly sorry for the moments where miscommunication got between us, for the times my anger showed up when patience should have, and for every silly misunderstanding that caused a moment of distance. You deserve only gentle love, and I promise to keep learning how to love you better.
+
+More than anything in this world, my biggest wish will always be to see you smiling, peaceful, and genuinely happy. I just want to keep choosing you, loving you through every mood, and filling your days with all the warmth you give to mine. ❤️
+</p>
+
+
+
+
+
+<p class="beginning">
+
+
+
+This is only the beginning. ✨
+
+
+
+</p>
+
+
+
+
+
+<button
+
+class="secondary-btn"
+
+id="replayBtn">
+
+
+
+↻ Replay Our Story
+
+
+
+</button>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+</main>
+
+
+
+
+
+<!-- =========================================================
+
+MEMORY MODAL
+
+========================================================= -->
+
+
+
+<div
+
+class="modal"
+
+id="memoryModal">
+
+
+
+<div class="modal-backdrop"></div>
+
+
+
+<div class="modal-content">
+
+
+
+<button
+
+class="close-modal"
+
+id="closeMemory">
+
+
+
+×
+
+
+
+</button>
+
+
+
+<img
+
+id="modalImage"
+
+alt="Memory">
+
+
+
+<div class="modal-copy">
+
+
+
+<span id="modalLabel"></span>
+
+
+
+<h3 id="modalTitle"></h3>
+
+
+
+<p id="modalText"></p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<!-- =========================================================
+
+SMALL FUTURE MODAL
+
+========================================================= -->
+
+
+
+<div
+
+class="mini-modal"
+
+id="miniModal">
+
+
+
+<div class="mini-card">
+
+
+
+<button
+
+class="close-modal"
+
+id="closeMini">
+
+
+
+×
+
+
+
+</button>
+
+
+
+<div id="miniIcon">
+
+❤️
+
+</div>
+
+
+
+<p id="miniText"></p>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+
+/* =========================================================
+
+PERSONALIZATION
+
+========================================================= */
+
+
+
+
+
+/*
+
+NICKNAMES
+
+
+
+She can enter either:
+
+
+
+Eruma
+
+
+
+or
+
+
+
+Swee
+
+*/
+
+
+
+const nicknames = [
+
+"eruma",
+
+"swee"
+
+];
+
+
+
+
+
+/* =========================================================
+
+YOUR 10 COUPLE PHOTOS
+
+=========================================================
+
+
+
+Put your photos inside:
+
+
+
+assets/
+
+
+
+Then rename them:
+
+
+
+couple-01.jpg
+
+couple-02.jpg
+
+...
+
+couple-10.jpg
+
+
+
+*/
+
+
+
+const memories = [
+
+
+
+[
+
+"Memory #01",
+
+"The beginning ❤️",
+
+"Replace this with what you remember about this photo.",
+
+"assets/couple-01.jpg"
+
+],
+
+
+
+[
+
+"Memory #02",
+
+"Our first chaos 😂",
+
+"Replace with the story behind this photo.",
+
+"assets/couple-02.jpg"
+
+],
+
+
+
+[
+
+"Memory #03",
+
+"Study partner 📚",
+
+"Replace with your favourite exam/study memory.",
+
+"assets/couple-03.jpg"
+
+],
+
+
+
+[
+
+"Memory #04",
+
+"Cricket war 🏏",
+
+"Maybe this was taken around one of our Dhoni vs Hardik arguments. 😂",
+
+"assets/couple-04.jpg"
+
+],
+
+
+
+[
+
+"Memory #05",
+
+"The spark ✨",
+
+"A photo from around the time we started getting really close.",
+
+"assets/couple-05.jpg"
+
+],
+
+
+
+[
+
+"Memory #06",
+
+"Just us 🫶",
+
+"Replace with your personal caption.",
+
+"assets/couple-06.jpg"
+
+],
+
+
+
+[
+
+"Memory #07",
+
+"Rave night 🎬",
+
+"A memory from one of our watch-together nights.",
+
+"assets/couple-07.jpg"
+
+],
+
+
+
+[
+
+"Memory #08",
+
+"Our favourite chaos 😂",
+
+"Replace with an inside joke only she will understand.",
+
+"assets/couple-08.jpg"
+
+],
+
+
+
+[
+
+"Memory #09",
+
+"Still choosing you ❤️",
+
+"Replace with what this moment meant to you.",
+
+"assets/couple-09.jpg"
+
+],
+
+
+
+[
+
+"Memory #10",
+
+"One more chapter",
+
+"And hopefully this is only one of thousands more.",
+
+"assets/couple-10.jpg"
+
+]
+
+
+
+];
+
+
+
+
+
+/* =========================================================
+
+CHILDHOOD PHOTOS
+
+========================================================= */
+
+
+
+const childhood = [
+
+
+
+"assets/childhood-01.jpg",
+
+"assets/childhood-02.jpg",
+
+"assets/childhood-03.jpg",
+
+"assets/childhood-04.jpg",
+
+"assets/childhood-05.jpg"
+
+
+
+];
+
+
+
+
+
+/* =========================================================
+
+RECENT PHOTOS
+
+========================================================= */
+
+
+
+const looks = [
+
+
+
+"assets/recent-01.jpg",
+
+"assets/recent-02.jpg",
+
+"assets/recent-03.jpg",
+
+"assets/recent-04.jpg",
+
+"assets/recent-05.jpg",
+
+"assets/recent-06.jpg",
+
+"assets/recent-07.jpg",
+
+"assets/recent-08.jpg"
+
+
+
+];
+
+
+
+
+
+/* =========================================================
+
+MUSIC
+
+========================================================= */
+
+
+
+const music =
+
+document.getElementById("bgMusic");
+
+
+
+const musicBtn =
+
+document.getElementById("musicBtn");
+
+
+
+
+
+musicBtn.onclick = () => {
+
+
+
+if(music.paused){
+
+
+
+music
+
+.play()
+
+.catch(()=>{});
+
+
+
+musicBtn.textContent = "🔊";
+
+
+
+}else{
+
+
+
+music.pause();
+
+
+
+musicBtn.textContent = "🎵";
+
+
+
+}
+
+
+
+};
+
+
+
+
+
+function startMusic(){
+
+
+
+music
+
+.play()
+
+.then(
+
+() => musicBtn.textContent = "🔊"
+
+)
+
+.catch(()=>{});
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+
+PASSWORD / GATE
+
+========================================================= */
+
+
+
+function openGate(){
+
+
+
+const value =
+
+document
+
+.getElementById("nicknameInput")
+
+.value
+
+.trim()
+
+.toLowerCase();
+
+
+
+
+
+if(nicknames.includes(value)){
+
+
+
+document
+
+.getElementById("gate")
+
+.classList
+
+.add("hidden");
+
+
+
+
+
+document
+
+.getElementById("main")
+
+.classList
+
+.remove("hidden");
+
+
+
+
+
+startMusic();
+
+
+
+initReveal();
+
+
+
+}else{
+
+
+
+document
+
+.getElementById("gateHint")
+
+.textContent =
+
+"Wrong answer 😭 Try Eruma or Swee.";
+
+
+
+
+
+const card =
+
+document.querySelector(".gate-card");
+
+
+
+
+
+card.classList.remove("shake");
+
+
+
+void card.offsetWidth;
+
+
+
+card.classList.add("shake");
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+document
+
+.getElementById("enterBtn")
+
+.onclick = openGate;
+
+
+
+
+
+document
+
+.getElementById("nicknameInput")
+
+.onkeydown = e => {
+
+
+
+if(e.key === "Enter"){
+
+openGate();
+
+}
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+START STORY
+
+========================================================= */
+
+
+
+document
+
+.getElementById("startBtn")
+
+.onclick = () => {
+
+
+
+document
+
+.querySelectorAll(".section")[1]
+
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+SCROLL REVEAL
+
+========================================================= */
+
+
+
+function initReveal(){
+
+
+
+const observer =
+
+new IntersectionObserver(
+
+entries => {
+
+
+
+entries.forEach(
+
+entry => {
+
+
+
+if(
+
+entry.isIntersecting
+
+){
+
+
+
+entry.target
+
+.classList
+
+.add("visible");
+
+
+
+}
+
+
+
+}
+
+);
+
+
+
+},
+
+{
+
+threshold:.1
+
+}
+
+);
+
+
+
+
+
+document
+
+.querySelectorAll(".reveal")
+
+.forEach(
+
+element =>
+
+observer.observe(element)
+
+);
+
+
+
+}
+
+
+
+
+
+initReveal();
+
+
+
+
+
+/* =========================================================
+
+MEMORY GALLERY
+
+========================================================= */
+
+
+
+document
+
+.getElementById("memoryGrid")
+
+.innerHTML = memories
+
+.map(
+
+(memory,index) => `
+
+
+
+<button
+
+class="memory-card reveal"
+
+data-i="${index}">
+
+
+
+<img
+
+src="${memory[3]}"
+
+alt="${memory[1]}"
+
+loading="lazy">
+
+
+
+<div class="memory-label">
+
+
+
+<small>
+
+${memory[0]}
+
+</small>
+
+
+
+<b>
+
+${memory[1]}
+
+</b>
+
+
+
+</div>
+
+
+
+</button>
+
+
+
+`
+
+)
+
+.join("");
+
+
+
+
+
+document
+
+.querySelectorAll(".memory-card")
+
+.forEach(
+
+card => {
+
+
+
+card.onclick = () => {
+
+
+
+const memory =
+
+memories[
+
++card.dataset.i
+
+];
+
+
+
+
+
+document
+
+.getElementById("modalImage")
+
+.src =
+
+memory[3];
+
+
+
+
+
+document
+
+.getElementById("modalLabel")
+
+.textContent =
+
+memory[0];
+
+
+
+
+
+document
+
+.getElementById("modalTitle")
+
+.textContent =
+
+memory[1];
+
+
+
+
+
+document
+
+.getElementById("modalText")
+
+.textContent =
+
+memory[2];
+
+
+
+
+
+document
+
+.getElementById("memoryModal")
+
+.classList
+
+.add("open");
+
+
+
+};
+
+
+
+}
+
+);
+
+
+
+
+
+document
+
+.getElementById("closeMemory")
+
+.onclick = () => {
+
+
+
+document
+
+.getElementById("memoryModal")
+
+.classList
+
+.remove("open");
+
+
+
+};
+
+
+
+
+
+document
+
+.querySelector(".modal-backdrop")
+
+.onclick = () => {
+
+
+
+document
+
+.getElementById("memoryModal")
+
+.classList
+
+.remove("open");
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+CHILDHOOD GALLERY
+
+========================================================= */
+
+
+
+document
+
+.getElementById("childhoodGrid")
+
+.innerHTML = childhood
+
+.map(
+
+(image,index) => `
+
+
+
+<img
+
+class="reveal"
+
+src="${image}"
+
+alt="Childhood photo ${index+1}"
+
+loading="lazy">
+
+
+
+`
+
+)
+
+.join("");
+
+
+
+
+
+/* =========================================================
+
+RECENT LOOKS
+
+========================================================= */
+
+
+
+document
+
+.getElementById("looksGrid")
+
+.innerHTML = looks
+
+.map(
+
+(image,index) => `
+
+
+
+<div class="look reveal">
+
+
+
+<img
+
+src="${image}"
+
+alt="Recent photo ${index+1}"
+
+loading="lazy">
+
+
+
+<span>
+
+Too pretty. Seriously. ❤️
+
+</span>
+
+
+
+</div>
+
+
+
+`
+
+)
+
+.join("");
+
+
+
+
+
+/* =========================================================
+
+CRICKET FIGHT
+
+========================================================= */
+
+
+
+const cricketLines = [
+
+
+
+"Dhoni is better. This is not a discussion. 😌",
+
+
+
+"She likes Hardik. I still love her despite this unfortunate opinion. 😂",
+
+
+
+"One day I'll convince you. Until then, cricket fights continue. 🏏",
+
+
+
+"Team Dhoni forever. Sorry, Swee. ❤️",
+
+
+
+"Hardik fans, please remain calm. 😂",
+
+
+
+"Relationship status: complicated by cricket preferences.",
+
+
+
+"At least we agree on one thing: we like each other more than cricket. ❤️"
+
+
+
+];
+
+
+
+
+
+let cricketIndex = 0;
+
+
+
+
+
+document
+
+.getElementById("cricketBtn")
+
+.onclick = () => {
+
+
+
+cricketIndex =
+
+(cricketIndex + 1)
+
+% cricketLines.length;
+
+
+
+
+
+document
+
+.getElementById("cricketText")
+
+.textContent =
+
+cricketLines[
+
+cricketIndex
+
+];
+
+
+
+
+
+heartPop(
+
+document
+
+.getElementById("cricketBtn")
+
+);
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+RAVE
+
+========================================================= */
+
+
+
+const raveStatuses = [
+
+
+
+"Waiting for my favourite person... 🎬",
+
+
+
+"Loading our virtual date... ❤️",
+
+
+
+"Press play. Pretend we're sitting together. 🫶",
+
+
+
+"Tonight's movie: whatever you want, Swee. 😌",
+
+
+
+"Rave mode: ON. Long distance: temporarily ignored. ❤️",
+
+
+
+"Somewhere between YouTube songs and Kadhaipoma... we made memories."
+
+
+
+];
+
+
+
+
+
+let raveIndex = 0;
+
+
+
+
+
+document
+
+.getElementById("raveBtn")
+
+.onclick = () => {
+
+
+
+raveIndex =
+
+(raveIndex + 1)
+
+% raveStatuses.length;
+
+
+
+
+
+document
+
+.getElementById("raveStatus")
+
+.textContent =
+
+raveStatuses[
+
+raveIndex
+
+];
+
+
+
+
+
+heartPop(
+
+document
+
+.getElementById("raveBtn")
+
+);
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+🔥 PICKUP LINE SYSTEM
+
+=========================================================
+
+
+
+THREE LEVELS:
+
+
+
+Sweet
+
+Flirty
+
+Dangerous
+
+
+
+You can add/change lines here.
+
+========================================================= */
+
+
+
+const pickupLines = {
+
+
+
+
+
+sweet: [
+
+
+
+"Are you my exam syllabus? Because I should probably stop thinking about you... but I can't. 😭❤️",
+
+
+
+"I was preparing for placements... but somehow I got placed in your heart. 😌❤️",
+
+
+
+"We started talking about academics. Somehow you became my favourite subject. 📚❤️",
+
+
+
+"Are you Swee? Because honestly... the nickname is accurate. 🥹❤️",
+
+
+
+"I don't need Rave tonight. I just need you. 🫶",
+
+
+
+"Our first conversation was academic. My feelings clearly weren't. 😏❤️",
+
+
+
+"If I could repeat one day from college, I'd choose the day we first started talking. ❤️",
+
+
+
+"You went from someone I knew to someone I never want to lose. ❤️",
+
+
+
+"I didn't plan on falling for you. You just made it very difficult not to. 🥹",
+
+
+
+"Somewhere between our conversations and our fights, you became home. ❤️",
+
+
+
+"You're my favourite person to annoy and my favourite person to love. 😂❤️",
+
+
+
+"If loving you was a subject, I would finally get full marks. ❤️"
+
+
+
+],
+
+
+
+
+
+flirty: [
+
+
+
+"Are you a cricket match? Because my heart rate increases whenever you're around. 😂❤️",
+
+
+
+"If we were playing pickup lines like our old days, I'd still choose you as my favourite distraction. 😏",
+
+
+
+"You know what's dangerous? You looking this good while knowing I already love you. 👀❤️",
+
+
+
+"I was going to give you a cute pickup line... then I remembered you're already mine to flirt with. 😌",
+
+
+
+"If you were sitting next to me right now, this conversation would probably be a lot less innocent. 😏❤️",
+
+
+
+"Long distance is really unfair... especially when I want to steal your attention in person. 👀",
+
+
+
+"You're basically my favourite notification, favourite distraction and favourite person. That's suspicious. 😏",
+
+
+
+"I think December deserves some credit... but honestly, you deserve all of it. ❤️",
+
+
+
+"If staring at your photos counted as exercise, I'd be ridiculously fit by now. 😂❤️",
+
+
+
+"You still have the same effect on me that you had during our pickup-line era. Maybe worse. 😏",
+
+
+
+"I don't need a pickup line. One look at you and my brain forgets what it was supposed to say. ❤️",
+
+
+
+"Our relationship started with academics and somehow ended up teaching me completely different things. 😏❤️"
+
+
+
+],
+
+
+
+
+
+dangerous: [
+
+
+
+"If you were here right now, I have a feeling this conversation wouldn't stay innocent for very long. 😏🔥",
+
+
+
+"You're dangerously attractive for someone who already knows exactly how much I like you. 🔥❤️",
+
+
+
+"I could write something romantic... but I'd rather whisper it to you when we're finally together. 😏",
+
+
+
+"The problem with your photos is that I can look at them from a safe distance. The problem with you being here would be absolutely nothing safe about it. 😏🔥",
+
+
+
+"Long distance is teaching me patience. Unfortunately, my imagination didn't get the memo. 😏🔥",
+
+
+
+"You know that look you give me? Yeah... that's exactly the kind of trouble I wouldn't mind getting into. 👀🔥",
+
+
+
+"If you keep looking this good, I'm going to need a warning before opening your photos. 😭🔥",
+
+
+
+"I miss your voice, your smile, your presence... and a few things I'm definitely not writing on a birthday website. 😏❤️",
+
+
+
+"We used to play pickup-line games for fun. Now you already know exactly what I'd say if you were beside me. 😏🔥",
+
+
+
+"You're my favourite kind of temptation — the one I don't actually want to resist. ❤️‍🔥",
+
+
+
+"I have a lot of things I'd like to do with you. First priority: finally close this distance. The rest can remain our secret. 😏❤️",
+
+
+
+"Maybe the best pickup line is simply: come closer and let me prove how much I missed you. ❤️‍🔥"
+
+
+
+]
+
+
+
+};
+
+
+
+
+
+const pickupDescriptions = {
+
+
+
+sweet:
+
+"Cute enough to make you smile. ❤️",
+
+
+
+flirty:
+
+"A little more dangerous... just like our old days. 😏",
+
+
+
+dangerous:
+
+"Okay... birthday girl chose violence. 🔥😏"
+
+
+
+};
+
+
+
+
+
+let currentPickupLevel = "sweet";
+
+
+
+let pickupIndex = 0;
+
+
+
+let unlockedLines = 0;
+
+
+
+
+
+/* =========================================================
+
+PICKUP LEVEL BUTTONS
+
+========================================================= */
+
+
+
+document
+
+.querySelectorAll(".level-btn")
+
+.forEach(
+
+button => {
+
+
+
+button.onclick = () => {
+
+
+
+currentPickupLevel =
+
+button.dataset.level;
+
+
+
+
+
+document
+
+.querySelectorAll(".level-btn")
+
+.forEach(
+
+b =>
+
+b.classList
+
+.remove("active")
+
+);
+
+
+
+
+
+button.classList.add("active");
+
+
+
+
+
+document
+
+.getElementById("pickupDescription")
+
+.textContent =
+
+pickupDescriptions[
+
+currentPickupLevel
+
+];
+
+
+
+
+
+pickupIndex = 0;
+
+
+
+
+
+document
+
+.getElementById("pickupText")
+
+.textContent =
+
+"Okay... now tap the button. 😏";
+
+
+
+
+
+document
+
+.getElementById("pickupCounter")
+
+.textContent =
+
+`${unlockedLines} lines unlocked`;
+
+
+
+};
+
+
+
+}
+
+);
+
+
+
+
+
+/* =========================================================
+
+PICKUP LINE BUTTON
+
+========================================================= */
+
+
+
+document
+
+.getElementById("pickupBtn")
+
+.onclick = () => {
+
+
+
+const lines =
+
+pickupLines[
+
+currentPickupLevel
+
+];
+
+
+
+
+
+pickupIndex =
+
+Math.floor(
+
+Math.random()
+
+* lines.length
+
+);
+
+
+
+
+
+const text =
+
+document
+
+.getElementById("pickupText");
+
+
+
+
+
+text.classList.remove("show");
+
+
+
+
+
+void text.offsetWidth;
+
+
+
+
+
+text.textContent =
+
+lines[pickupIndex];
+
+
+
+
+
+text.classList.add("show");
+
+
+
+
+
+unlockedLines++;
+
+
+
+
+
+document
+
+.getElementById("pickupCounter")
+
+.textContent =
+
+`${unlockedLines} lines unlocked`;
+
+
+
+
+
+heartPop(
+
+document
+
+.getElementById("pickupBtn")
+
+);
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+FUTURE CARDS
+
+========================================================= */
+
+
+
+document
+
+.querySelectorAll(".future-card")
+
+.forEach(
+
+card => {
+
+
+
+card.onclick = () => {
+
+
+
+document
+
+.getElementById("miniIcon")
+
+.textContent =
+
+card
+
+.textContent
+
+.trim()
+
+.slice(0,2);
+
+
+
+
+
+document
+
+.getElementById("miniText")
+
+.textContent =
+
+card.dataset.future;
+
+
+
+
+
+document
+
+.getElementById("miniModal")
+
+.classList
+
+.add("open");
+
+
+
+};
+
+
+
+}
+
+);
+
+
+
+
+
+document
+
+.getElementById("closeMini")
+
+.onclick = () => {
+
+
+
+document
+
+.getElementById("miniModal")
+
+.classList
+
+.remove("open");
+
+
+
+};
+
+
+
+
+
+document
+
+.getElementById("miniModal")
+
+.onclick = e => {
+
+
+
+if(
+
+e.target.id === "miniModal"
+
+){
+
+
+
+e.currentTarget
+
+.classList
+
+.remove("open");
+
+
+
+}
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+TIME CAPSULE
+
+========================================================= */
+
+
+
+document
+
+.getElementById("capsuleBtn")
+
+.onclick = () => {
+
+
+
+document
+
+.getElementById("capsule")
+
+.classList
+
+.remove("hidden");
+
+
+
+
+
+document
+
+.getElementById("capsuleBtn")
+
+.textContent =
+
+"🔓 Opened";
+
+
+
+
+
+document
+
+.getElementById("capsuleBtn")
+
+.disabled = true;
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+💍 MARRIAGE PROPOSAL
+
+========================================================= */
+
+
+
+const noBtn =
+
+document.getElementById("noBtn");
+
+
+
+const proposalArea =
+
+document.getElementById("proposalArea");
+
+
+
+const noMessage =
+
+document.getElementById("noMessage");
+
+
+
+
+
+let noMoves = 0;
+
+
+
+
+
+const noTexts = [
+
+
+
+"Nice try, Eruma 😌",
+
+
+
+"Too slow 😂",
+
+
+
+"Nope nope nope.",
+
+
+
+"You can't escape this question. 👀",
+
+
+
+"The NO button has commitment issues.",
+
+
+
+"ERROR 404: NO NOT FOUND.",
+
+
+
+"Swee, just press YES already. ❤️"
+
+
+
+];
+
+
+
+
+
+function moveNo(){
+
+
+
+noMoves++;
+
+
+
+
+
+const area =
+
+proposalArea
+
+.getBoundingClientRect();
+
+
+
+
+
+const button =
+
+noBtn
+
+.getBoundingClientRect();
+
+
+
+
+
+const maxX =
+
+Math.max(
+
+0,
+
+area.width -
+
+button.width -
+
+8
+
+);
+
+
+
+
+
+const maxY =
+
+Math.max(
+
+0,
+
+area.height -
+
+button.height -
+
+8
+
+);
+
+
+
+
+
+const x =
+
+Math.random()
+
+* maxX
+
+-
+
+(
+
+area.width / 2 -
+
+maxX / 2
+
+);
+
+
+
+
+
+const y =
+
+Math.random()
+
+* maxY
+
+-
+
+(
+
+area.height / 2 -
+
+maxY / 2
+
+);
+
+
+
+
+
+noBtn.style.transform =
+
+`translate(${x}px,${y}px)`;
+
+
+
+
+
+noMessage.textContent =
+
+noTexts[
+
+Math.min(
+
+noMoves - 1,
+
+noTexts.length - 1
+
+)
+
+];
+
+
+
+}
+
+
+
+
+
+/* Desktop */
+
+
+
+noBtn.onmouseenter =
+
+moveNo;
+
+
+
+
+
+/* Mobile */
+
+
+
+noBtn.onpointerdown =
+
+e => {
+
+
+
+e.preventDefault();
+
+
+
+moveNo();
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+YES BUTTON
+
+========================================================= */
+
+
+
+document
+
+.getElementById("yesBtn")
+
+.onclick = () => {
+
+
+
+celebrate();
+
+
+
+
+
+document
+
+.getElementById("letterSection")
+
+.classList
+
+.remove("hidden");
+
+
+
+
+
+setTimeout(
+
+() => {
+
+
+
+document
+
+.getElementById("letterSection")
+
+.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+
+
+},
+
+700
+
+);
+
+
+
+};
+
+
+
+
+
+/* =========================================================
+
+CELEBRATION
+
+========================================================= */
+
+
+
+function celebrate(){
+
+
+
+for(
+
+let i=0;
+
+i<130;
+
+i++
+
+){
+
+
+
+const confetti =
+
+document.createElement("i");
+
+
+
+
+
+confetti
+
+.className =
+
+"confetti";
+
+
+
+
+
+confetti.textContent =
+
+[
+
+"❤️",
+
+"✨",
+
+"💖",
+
+"🌹",
+
+"💕"
+
+][
+
+Math.floor(
+
+Math.random()*5
+
+)
+
+];
+
+
+
+
+
+confetti.style.left =
+
+Math.random()*100 +
+
+"vw";
+
+
+
+
+
+confetti.style.top =
+
+(
+
+-10 -
+
+Math.random()*20
+
+) +
+
+"vh";
+
+
+
+
+
+confetti.style.setProperty(
+
+"--x",
+
+Math.random()*300-150 +
+
+"px"
+
+);
+
+
+
+
+
+confetti.style.animationDelay =
+
+Math.random()*.6 +
+
+"s";
+
+
+
+
+
+document
+
+.body
+
+.appendChild(confetti);
+
+
+
+
+
+setTimeout(
+
+() => confetti.remove(),
+
+3200
+
+);
+
+
+
+}
+
+
+
+
+
+document
+
+.getElementById("yesBtn")
+
+.textContent =
+
+"YES ❤️🥹";
+
+
+
+
+
+noBtn.style.display =
+
+"none";
+
+
+
+
+
+noMessage.textContent =
+
+"Okay. Now THAT is the correct answer. ❤️";
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+
+HEART POP
+
+========================================================= */
+
+
+
+function heartPop(element){
+
+
+
+const rect =
+
+element
+
+.getBoundingClientRect();
+
+
+
+
+
+for(
+
+let i=0;
+
+i<4;
+
+i++
+
+){
+
+
+
+const heart =
+
+document.createElement("span");
+
+
+
+
+
+heart.className =
+
+"love-pop";
+
+
+
+
+
+heart.textContent =
+
+[
+
+"❤️",
+
+"💕",
+
+"✨",
+
+"💖"
+
+][i];
+
+
+
+
+
+heart.style.left =
+
+rect.left +
+
+rect.width/2 +
+
+(
+
+Math.random()*50-25
+
+) +
+
+"px";
+
+
+
+
+
+heart.style.top =
+
+rect.top + 10 +
+
+"px";
+
+
+
+
+
+document
+
+.body
+
+.appendChild(heart);
+
+
+
+
+
+setTimeout(
+
+() => heart.remove(),
+
+1300
+
+);
+
+
+
+}
+
+
+
+}
+
+
+
+
+
+/* =========================================================
+
+FLOATING HEARTS
+
+========================================================= */
+
+
+
+setInterval(
+
+() => {
+
+
+
+const heart =
+
+document.createElement("span");
+
+
+
+
+
+heart.className =
+
+"float-heart";
+
+
+
+
+
+heart.textContent =
+
+[
+
+"♡",
+
+"♥",
+
+"❤",
+
+"✦"
+
+][
+
+Math.floor(
+
+Math.random()*4
+
+)
+
+];
+
+
+
+
+
+heart.style.left =
+
+Math.random()*100 +
+
+"%";
+
+
+
+
+
+heart.style.fontSize =
+
+10 +
+
+Math.random()*18 +
+
+"px";
+
+
+
+
+
+heart.style.animationDuration =
+
+7 +
+
+Math.random()*8 +
+
+"s";
+
+
+
+
+
+document
+
+.getElementById("floatingHearts")
+
+.appendChild(heart);
+
+
+
+
+
+setTimeout(
+
+() => heart.remove(),
+
+16000
+
+);
+
+
+
+},
+
+1300
+
+);
+
+
+
+
+
+/* =========================================================
+
+REPLAY
+
+========================================================= */
+
+
+
+document
+
+.getElementById("replayBtn")
+
+.onclick = () => {
+
+
+
+location.reload();
+
+
+
+};
+
+
+
+</script>
+
+
+
+</body>
+
+</html>
