@@ -1784,9 +1784,10 @@ PICKUP LINE GAME
 
 ========================================================= */
 
-
-
-
+.pickup-section{
+    position:relative;
+    overflow:hidden;
+}
 
 .pickup-glow{
 
@@ -1962,37 +1963,55 @@ margin-bottom:15px;
 
 
 
+.pickup-carousel{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    width:100%;
+    margin:15px 0 20px;
+}
+
+.carousel-btn{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.06);
+    color:white;
+    font-size:1.2rem;
+    display:grid;
+    place-items:center;
+    transition:.25s ease;
+    flex-shrink:0;
+    user-select:none;
+}
+
+.carousel-btn:hover{
+    background:rgba(255,111,157,.25);
+    border-color:var(--pink);
+    transform:scale(1.08);
+}
+
 .pickup-text{
 
 font-family:Georgia,serif;
 
-
-
 font-size:clamp(1.7rem,4vw,2.5rem);
-
-
 
 color:white;
 
-
-
-min-height:150px;
-
-
+min-height:170px;
 
 display:grid;
 
-
-
 place-items:center;
-
-
 
 padding:20px;
 
-
-
 transition:.3s;
+
+flex:1;
 
 }
 
@@ -2035,22 +2054,6 @@ scale(1)
 translateY(0);
 
 }
-
-}
-
-
-
-.pickup-counter{
-
-font-size:.7rem;
-
-
-
-color:#806e79;
-
-
-
-margin-top:15px;
 
 }
 
@@ -3192,11 +3195,22 @@ width:100%;
 
 
 
+.pickup-carousel{
+    gap:8px;
+}
+
+.carousel-btn{
+    width:40px;
+    height:40px;
+    font-size:1rem;
+}
+
 .pickup-text{
 
-font-size:1.55rem;
+font-size:1.45rem;
 
-min-height:180px;
+min-height:190px;
+padding:10px;
 
 }
 
@@ -5767,42 +5781,21 @@ Cute enough to make you smile.
 
 
 
-<div
+<div class="pickup-carousel">
 
-class="pickup-text"
+    <button class="carousel-btn" id="prevPickupBtn" aria-label="Previous line">←</button>
 
-id="pickupText">
+    <div
+        class="pickup-text"
+        id="pickupText">
 
+        Tap the arrows or wait for our story to play... 😏
 
+    </div>
 
-Tap the button.
-
-
-
-Don't blame me for what happens next. 👀❤️
-
-
+    <button class="carousel-btn" id="nextPickupBtn" aria-label="Next line">→</button>
 
 </div>
-
-
-
-
-
-<button
-
-class="primary-btn"
-
-id="pickupBtn">
-
-
-
-Give me a pickup line 😏
-
-
-
-</button>
-
 
 
 
@@ -7535,6 +7528,7 @@ startMusic();
 
 
 initReveal();
+startPickupTimer();
 
 
 
@@ -8341,25 +8335,26 @@ sweet: [
 
 
 "If loving you was a subject, I would finally get full marks. ❤️",
+
 "I don't just want to be the person you love; I want to be the person you feel safest being completely yourself with. ❤️",
-    
-    "Somehow, every version of my future looks better when I imagine you standing beside me. 🥹❤️",
-    
-    "I could spend an entire night listening to you talk and still wish the morning would wait a little longer. 🌙❤️",
-    
-    "You're not just the person I miss when you're away; you're the person I instinctively look for when you're near. 🫶",
-    
-    "If home is a feeling, then somehow you became mine without even trying. ❤️",
-    
-    "I want the kind of love where even our silence feels like a conversation only we understand. 🥺❤️",
-    
-    "You make ordinary moments feel like memories I already know I'll miss someday. ❤️✨",
-    
-    "I don't need a perfect life. Give me you, a quiet room, and enough time to forget the rest of the world. 🫶",
-    
-    "I could memorize every little expression you make and still never get tired of looking at you. 🥹❤️",
-    
-    "My favourite place isn't a location anymore. It's wherever I get to sit beside you. ❤️"
+
+"Somehow, every version of my future looks better when I imagine you standing beside me. 🥹❤️",
+
+"I could spend an entire night listening to you talk and still wish the morning would wait a little longer. 🌙❤️",
+
+"You're not just the person I miss when you're away; you're the person I instinctively look for when you're near. 🫶",
+
+"If home is a feeling, then somehow you became mine without even trying. ❤️",
+
+"I want the kind of love where even our silence feels like a conversation only we understand. 🥺❤️",
+
+"You make ordinary moments feel like memories I already know I'll miss someday. ❤️✨",
+
+"I don't need a perfect life. Give me you, a quiet room, and enough time to forget the rest of the world. 🫶",
+
+"I could memorize every little expression you make and still never get tired of looking at you. 🥹❤️",
+
+"My favourite place isn't a location anymore. It's wherever I get to sit beside you. ❤️"
 
 
 
@@ -8417,35 +8412,37 @@ flirty: [
 
 
 
-"Our relationship started with academics and somehow ended up teaching me completely different things. 😏❤️","You really need to stop looking at me like that... I'm trying very hard to behave. 😏❤️",
-    
-    "Every time you get closer, my ability to act normal disappears a little more. 👀❤️",
-    
-    "You have absolutely no idea how difficult it is to keep my hands innocent when you're this close to me. 😏",
-    
-    "If we're alone together, don't expect me to waste the opportunity just staring at you. ❤️‍🔥",
-    
-    "Your smile is cute, but that look you give me when you know exactly what I'm thinking? Completely unfair. 😏",
-    
-    "I love our conversations, but sometimes I just want to stop talking and let the chemistry speak for us. ❤️",
-    
-    "You know that moment when we get quiet and just look at each other? Yeah... I want a lot more of those moments. 👀❤️",
-    
-    "I swear you become ten times more attractive when you know you're driving me crazy and deliberately keep doing it. 😭😏",
-    
-    "Come a little closer. I promise I have absolutely no innocent reason for asking. 😌❤️",
-    
-    "You're dangerously good at turning an ordinary conversation into something neither of us wants to end. 🔥",
-    
-    "If you keep teasing me like that, I'm going to have to remind you exactly how much I adore being close to you. 😏❤️",
-    
-    "I don't know what's more addictive—your kisses, your voice, or the way you look at me right before one. ❤️‍🔥",
-    
-    "I want a night where we forget our phones exist and remember exactly why being together is my favourite thing. 😏❤️",
-    
-    "You don't even have to touch me anymore. One look from you is enough to completely ruin my concentration. 👀🔥",
-    
-    "I could tell you what I'm thinking right now... but watching you figure it out yourself sounds much more fun. 😏"
+"Our relationship started with academics and somehow ended up teaching me completely different things. 😏❤️",
+
+"You really need to stop looking at me like that... I'm trying very hard to behave. 😏❤️",
+
+"Every time you get closer, my ability to act normal disappears a little more. 👀❤️",
+
+"You have absolutely no idea how difficult it is to keep my hands innocent when you're this close to me. 😏",
+
+"If we're alone together, don't expect me to waste the opportunity just staring at you. ❤️‍🔥",
+
+"Your smile is cute, but that look you give me when you know exactly what I'm thinking? Completely unfair. 😏",
+
+"I love our conversations, but sometimes I just want to stop talking and let the chemistry speak for us. ❤️",
+
+"You know that moment when we get quiet and just look at each other? Yeah... I want a lot more of those moments. 👀❤️",
+
+"I swear you become ten times more attractive when you know you're driving me crazy and deliberately keep doing it. 😭😏",
+
+"Come a little closer. I promise I have absolutely no innocent reason for asking. 😌❤️",
+
+"You're dangerously good at turning an ordinary conversation into something neither of us wants to end. 🔥",
+
+"If you keep teasing me like that, I'm going to have to remind you exactly how much I adore being close to you. 😏❤️",
+
+"I don't know what's more addictive—your kisses, your voice, or the way you look at me right before one. ❤️‍🔥",
+
+"I want a night where we forget our phones exist and remember exactly why being together is my favourite thing. 😏❤️",
+
+"You don't even have to touch me anymore. One look from you is enough to completely ruin my concentration. 👀🔥",
+
+"I could tell you what I'm thinking right now... but watching you figure it out yourself sounds much more fun. 😏"
 
 
 
@@ -8503,45 +8500,47 @@ dangerous: [
 
 
 
-"Maybe the best pickup line is simply: come closer and let me prove how much I missed you. ❤️‍🔥","If you were beside me right now, I don't think either of us would be particularly interested in going to sleep early. 😏🔥",
-    
-    "There's a dangerous amount of chemistry between us, and honestly, I have no interest in fixing it. ❤️‍🔥",
-    
-    "I want one of those nights where we stay impossibly close, forget the time, and don't want the moment to end. 😏❤️",
-    
-    "The way you look at me when we're alone makes it incredibly difficult to remember that I'm supposed to behave. 🔥",
-    
-    "I miss the kind of closeness where a single kiss turns into an entire evening neither of us planned. ❤️‍🔥",
-    
-    "You know exactly what happens when you whisper in my ear like that, yet you still do it. You're trouble. 😏🔥",
-    
-    "If I get to choose how we spend our next night together, expect very little personal space between us. ❤️‍🔥",
-    
-    "I want to pull you close, hold you there, and make the whole world outside that room completely irrelevant. 😏❤️",
-    
-    "There are things I want to whisper to you when we're alone that definitely shouldn't be said over a phone call. 👀🔥",
-    
-    "I don't just want your attention—I want one of those moments where neither of us remembers what we were talking about because we're too busy being close. ❤️‍🔥",
-    
-    "You have this terrifying ability to turn one innocent kiss into a situation where neither of us wants to stop. 😏",
-    
-    "Next time we're together, I'm stealing the longest hug you've ever had and probably a few kisses along the way. ❤️🔥",
-    
-    "I want to look into your eyes from ridiculously close, smile, and make you wonder exactly what I'm about to do next. 😏❤️",
-    
-    "The most dangerous thing about being alone with you is knowing neither of us actually wants to behave. 🔥",
-    
-    "Give me one quiet night with you, no phones, no interruptions, and all the affection we've been saving up. ❤️‍🔥",
-    
-    "I want to be close enough to hear your heartbeat and stay there until neither of us remembers how long we've been holding each other. 🫶🔥",
-    
-    "You can keep pretending you're innocent, but that little smile tells me you already know exactly where this conversation is going. 😏❤️",
-    
-    "I don't need a plan for our next night together. Just you, me, privacy, and plenty of time to make up for the distance. ❤️‍🔥",
-    
-    "If chemistry could be illegal, we'd both have a very long criminal record by now. 😭🔥",
-    
-    "Birthday wish? You. Close to me. No distractions. And enough time together that neither of us wants the night to end. ❤️‍🔥"
+"Maybe the best pickup line is simply: come closer and let me prove how much I missed you. ❤️‍🔥",
+
+"If you were beside me right now, I don't think either of us would be particularly interested in going to sleep early. 😏🔥",
+
+"There's a dangerous amount of chemistry between us, and honestly, I have no interest in fixing it. ❤️‍🔥",
+
+"I want one of those nights where we stay impossibly close, forget the time, and don't want the moment to end. 😏❤️",
+
+"The way you look at me when we're alone makes it incredibly difficult to remember that I'm supposed to behave. 🔥",
+
+"I miss the kind of closeness where a single kiss turns into an entire evening neither of us planned. ❤️‍🔥",
+
+"You know exactly what happens when you whisper in my ear like that, yet you still do it. You're trouble. 😏🔥",
+
+"If I get to choose how we spend our next night together, expect very little personal space between us. ❤️‍🔥",
+
+"I want to pull you close, hold you there, and make the whole world outside that room completely irrelevant. 😏❤️",
+
+"There are things I want to whisper to you when we're alone that definitely shouldn't be said over a phone call. 👀🔥",
+
+"I don't just want your attention—I want one of those moments where neither of us remembers what we were talking about because we're too busy being close. ❤️‍🔥",
+
+"You have this terrifying ability to turn one innocent kiss into a situation where neither of us wants to stop. 😏",
+
+"Next time we're together, I'm stealing the longest hug you've ever had and probably a few kisses along the way. ❤️🔥",
+
+"I want to look into your eyes from ridiculously close, smile, and make you wonder exactly what I'm about to do next. 😏❤️",
+
+"The most dangerous thing about being alone with you is knowing neither of us actually wants to behave. 🔥",
+
+"Give me one quiet night with you, no phones, no interruptions, and all the affection we've been saving up. ❤️‍🔥",
+
+"I want to be close enough to hear your heartbeat and stay there until neither of us remembers how long we've been holding each other. 🫶🔥",
+
+"You can keep pretending you're innocent, but that little smile tells me you already know exactly where this conversation is going. 😏❤️",
+
+"I don't need a plan for our next night together. Just you, me, privacy, and plenty of time to make up for the distance. ❤️‍🔥",
+
+"If chemistry could be illegal, we'd both have a very long criminal record by now. 😭🔥",
+
+"Birthday wish? You. Close to me. No distractions. And enough time together that neither of us wants the night to end. ❤️‍🔥"
 
 
 
@@ -8585,12 +8584,64 @@ dangerous:
 
 let currentPickupLevel = "sweet";
 
-
-
 let pickupIndex = 0;
 
+let pickupTimer = null;
 
 
+
+function renderPickupLine(animate = true) {
+
+    const lines = pickupLines[currentPickupLevel];
+
+    const textEl = document.getElementById("pickupText");
+
+    if (animate) {
+        textEl.classList.remove("show");
+        void textEl.offsetWidth;
+        textEl.textContent = lines[pickupIndex];
+        textEl.classList.add("show");
+    } else {
+        textEl.textContent = lines[pickupIndex];
+    }
+
+}
+
+function nextPickupLine() {
+
+    const lines = pickupLines[currentPickupLevel];
+
+    pickupIndex = (pickupIndex + 1) % lines.length;
+
+    renderPickupLine(true);
+
+}
+
+function prevPickupLine() {
+
+    const lines = pickupLines[currentPickupLevel];
+
+    pickupIndex = (pickupIndex - 1 + lines.length) % lines.length;
+
+    renderPickupLine(true);
+
+}
+
+function startPickupTimer() {
+
+    if (pickupTimer) clearInterval(pickupTimer);
+
+    pickupTimer = setInterval(() => {
+        nextPickupLine();
+    }, 5000);
+
+}
+
+function resetPickupTimer() {
+
+    startPickupTimer();
+
+}
 
 
 
@@ -8668,19 +8719,9 @@ currentPickupLevel
 
 pickupIndex = 0;
 
+renderPickupLine(true);
 
-
-
-
-document
-
-.getElementById("pickupText")
-
-.textContent =
-
-"Okay... now tap the button. 😏";
-
-
+resetPickupTimer();
 
 
 
@@ -8698,7 +8739,7 @@ document
 
 /* =========================================================
 
-PICKUP LINE BUTTON
+PICKUP CAROUSEL ARROW BUTTONS
 
 ========================================================= */
 
@@ -8706,94 +8747,38 @@ PICKUP LINE BUTTON
 
 document
 
-.getElementById("pickupBtn")
+.getElementById("prevPickupBtn")
 
 .onclick = () => {
 
+    prevPickupLine();
 
+    resetPickupTimer();
 
-const lines =
-
-pickupLines[
-
-currentPickupLevel
-
-];
-
-
-
-
-
-pickupIndex =
-
-Math.floor(
-
-Math.random()
-
-* lines.length
-
-);
-
-
-
-
-
-const text =
-
-document
-
-.getElementById("pickupText");
-
-
-
-
-
-text.classList.remove("show");
-
-
-
-
-
-void text.offsetWidth;
-
-
-
-
-
-text.textContent =
-
-lines[pickupIndex];
-
-
-
-
-
-text.classList.add("show");
-
-
-
-
-
-unlockedLines++;
-
-
-
-
-
-
-
-
-heartPop(
-
-document
-
-.getElementById("pickupBtn")
-
-);
-
-
+    heartPop(document.getElementById("prevPickupBtn"));
 
 };
+
+
+
+document
+
+.getElementById("nextPickupBtn")
+
+.onclick = () => {
+
+    nextPickupLine();
+
+    resetPickupTimer();
+
+    heartPop(document.getElementById("nextPickupBtn"));
+
+};
+
+
+
+// Initial render of first pickup line
+renderPickupLine(false);
 
 
 
