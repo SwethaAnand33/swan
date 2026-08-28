@@ -342,32 +342,6 @@ color:white;
 
 
 
-.music-btn{
-
-position:fixed;
-
-right:18px;
-
-top:18px;
-
-z-index:1000;
-
-width:46px;
-
-height:46px;
-
-border-radius:50%;
-
-border:1px solid var(--line);
-
-background:rgba(10,5,16,.8);
-
-color:white;
-
-}
-
-
-
 /* =========================================================
 
 STARS + FLOATING HEARTS
@@ -1785,9 +1759,14 @@ PICKUP LINE GAME
 ========================================================= */
 
 .pickup-section{
-    position:relative;
-    overflow:hidden;
+
+position:relative;
+
+overflow:hidden;
+
 }
+
+
 
 .pickup-glow{
 
@@ -1964,34 +1943,64 @@ margin-bottom:15px;
 
 
 .pickup-carousel{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-    width:100%;
-    margin:15px 0 20px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:14px;
+
+width:100%;
+
+margin:15px 0 20px;
+
 }
+
+
 
 .carousel-btn{
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    border:1px solid var(--line);
-    background:rgba(255,255,255,.06);
-    color:white;
-    font-size:1.2rem;
-    display:grid;
-    place-items:center;
-    transition:.25s ease;
-    flex-shrink:0;
-    user-select:none;
+
+width:48px;
+
+height:48px;
+
+border-radius:50%;
+
+border:1px solid var(--line);
+
+background:rgba(255,255,255,.06);
+
+color:white;
+
+font-size:1.2rem;
+
+display:grid;
+
+place-items:center;
+
+transition:.25s ease;
+
+flex-shrink:0;
+
+user-select:none;
+
 }
 
+
+
 .carousel-btn:hover{
-    background:rgba(255,111,157,.25);
-    border-color:var(--pink);
-    transform:scale(1.08);
+
+background:rgba(255,111,157,.25);
+
+border-color:var(--pink);
+
+transform:scale(1.08);
+
 }
+
+
 
 .pickup-text{
 
@@ -3196,20 +3205,31 @@ width:100%;
 
 
 .pickup-carousel{
-    gap:8px;
+
+gap:8px;
+
 }
 
+
+
 .carousel-btn{
-    width:40px;
-    height:40px;
-    font-size:1rem;
+
+width:40px;
+
+height:40px;
+
+font-size:1rem;
+
 }
+
+
 
 .pickup-text{
 
 font-size:1.45rem;
 
 min-height:190px;
+
 padding:10px;
 
 }
@@ -3293,24 +3313,6 @@ class="floating-hearts"
 id="floatingHearts">
 
 </div>
-
-
-
-<!-- MUSIC BUTTON -->
-
-
-
-<button
-
-class="music-btn"
-
-id="musicBtn"
-
-aria-label="Music">
-
-🎵
-
-</button>
 
 
 
@@ -4741,6 +4743,7 @@ MS Dhoni ❤️
 
 
 <strong>
+
 Swee side
 
 </strong>
@@ -4866,6 +4869,7 @@ Chapter 03
 
 
 <p class="lead">
+
 ..
 
 
@@ -7383,73 +7387,20 @@ document.getElementById("bgMusic");
 
 
 
-const musicBtn =
-
-document.getElementById("musicBtn");
 
 
+function toggleMusic(){
 
-
-
-musicBtn.onclick = () => {
-
-
-
-if(music.paused){
-
-
-
-music
-
-.play()
-
-.catch(()=>{});
-
-
-
-musicBtn.textContent = "🔊";
-
-
-
-}else{
-
-
-
-music.pause();
-
-
-
-musicBtn.textContent = "🎵";
-
-
-
-}
-
-
-
-};
-
-
-
-
-
-function startMusic(){
-
-
-
-music
-
-.play()
-
-.then(
-
-() => musicBtn.textContent = "🔊"
-
-)
-
-.catch(()=>{});
-
-
+    if(music.paused){
+        music.play().then(() => {
+            document.getElementById("raveBtn").textContent = "Pause Together ⏸";
+            document.getElementById("raveStatus").textContent = "Playing our song... Just like our Rave nights ❤️🎵";
+        }).catch(()=>{});
+    }else{
+        music.pause();
+        document.getElementById("raveBtn").textContent = "Press Play Together ▶";
+        document.getElementById("raveStatus").textContent = "Music paused. Press play to restart our song 🫶";
+    }
 
 }
 
@@ -7510,10 +7461,6 @@ document
 .remove("hidden");
 
 
-
-
-
-startMusic();
 
 
 
@@ -8154,46 +8101,6 @@ RAVE
 
 
 
-const raveStatuses = [
-
-
-
-"Waiting for my favourite person... 🎬",
-
-
-
-"Loading our virtual date... ❤️",
-
-
-
-"Press play. Pretend we're sitting together. 🫶",
-
-
-
-"Tonight's movie: whatever you want, Swee. 😌",
-
-
-
-"Rave mode: ON. Long distance: temporarily ignored. ❤️",
-
-
-
-"Somewhere between YouTube songs and Kadhaipoma... we made memories."
-
-
-
-];
-
-
-
-
-
-let raveIndex = 0;
-
-
-
-
-
 document
 
 .getElementById("raveBtn")
@@ -8202,29 +8109,7 @@ document
 
 
 
-raveIndex =
-
-(raveIndex + 1)
-
-% raveStatuses.length;
-
-
-
-
-
-document
-
-.getElementById("raveStatus")
-
-.textContent =
-
-raveStatuses[
-
-raveIndex
-
-];
-
-
+toggleMusic();
 
 
 
