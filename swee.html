@@ -1786,14 +1786,6 @@ PICKUP LINE GAME
 
 
 
-.pickup-section{
-
-position:relative;
-
-overflow:hidden;
-
-}
-
 
 
 .pickup-glow{
@@ -3253,12 +3245,6 @@ font-size:2rem;
 }
 
 
-
-.pickup-counter{
-
-margin-top:5px;
-
-}
 
 }
 
@@ -5821,21 +5807,6 @@ Give me a pickup line 😏
 
 
 
-<div
-
-class="pickup-counter"
-
-id="pickupCounter">
-
-
-
-0 lines unlocked
-
-
-
-</div>
-
-
 
 </div>
 
@@ -8069,7 +8040,7 @@ loading="lazy">
 
 <span>
 
-Too pretty. Seriously. ❤️
+My gurl...❤️
 
 </span>
 
@@ -8535,7 +8506,6 @@ let pickupIndex = 0;
 
 
 
-let unlockedLines = 0;
 
 
 
@@ -8626,16 +8596,6 @@ document
 "Okay... now tap the button. 😏";
 
 
-
-
-
-document
-
-.getElementById("pickupCounter")
-
-.textContent =
-
-`${unlockedLines} lines unlocked`;
 
 
 
@@ -8732,16 +8692,6 @@ text.classList.add("show");
 unlockedLines++;
 
 
-
-
-
-document
-
-.getElementById("pickupCounter")
-
-.textContent =
-
-`${unlockedLines} lines unlocked`;
 
 
 
