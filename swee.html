@@ -1736,9 +1736,101 @@ background:rgba(255,255,255,.035);
 
 
 
+.rave-controls{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:12px;
+
+margin:20px 0 14px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.rave-player-container{
+
+max-width:440px;
+
+margin:15px auto 5px;
+
+background:rgba(0,0,0,.25);
+
+border:1px solid var(--line);
+
+border-radius:18px;
+
+padding:14px 18px;
+
+}
+
+
+
+.rave-progress-bar{
+
+width:100%;
+
+height:6px;
+
+background:rgba(255,255,255,.12);
+
+border-radius:999px;
+
+cursor:pointer;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+
+.rave-progress-fill{
+
+height:100%;
+
+width:0%;
+
+background:linear-gradient(90deg, var(--pink), var(--pink2));
+
+border-radius:999px;
+
+transition:width .1s linear;
+
+}
+
+
+
+.rave-time-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-top:8px;
+
+font-size:.8rem;
+
+color:var(--pink2);
+
+font-family:monospace;
+
+}
+
+
+
 .rave-status{
 
-min-height:35px;
+min-height:30px;
 
 
 
@@ -3340,17 +3432,11 @@ You can replace music.mp3 with your own song.
 
 id="bgMusic"
 
-loop>
-
-
-
-<source
-
 src="assets/music.mp3"
 
-type="audio/mpeg">
+preload="auto"
 
-
+loop>
 
 </audio>
 
@@ -5556,19 +5642,49 @@ Our little long-distance cinema.
 
 
 
-<button
+<div class="rave-controls">
 
-class="primary-btn"
+    <button
 
-id="raveBtn">
+        class="primary-btn"
+
+        id="ravePlayBtn">
+
+        ▶ Play Together
+
+    </button>
+
+    <button
+
+        class="secondary-btn"
+
+        id="ravePauseBtn">
+
+        ⏸ Pause
+
+    </button>
+
+</div>
 
 
 
-Press Play Together ▶
+<div class="rave-player-container">
 
+    <div class="rave-progress-bar" id="raveProgressBar">
 
+        <div class="rave-progress-fill" id="raveProgressFill"></div>
 
-</button>
+    </div>
+
+    <div class="rave-time-row">
+
+        <span id="raveCurrentTime">0:00</span>
+
+        <span id="raveDuration">0:00</span>
+
+    </div>
+
+</div>
 
 
 
@@ -5580,11 +5696,7 @@ class="rave-status"
 
 id="raveStatus">
 
-
-
-Waiting for my favourite person...
-
-
+Waiting for my favourite person to press play... 🫶
 
 </p>
 
@@ -7375,34 +7487,147 @@ const looks = [
 
 /* =========================================================
 
-MUSIC
+MUSIC & RAVE PLAYER
 
 ========================================================= */
 
 
 
-const music =
+const music = document.getElementById("bgMusic");
 
-document.getElementById("bgMusic");
+const raveProgressFill = document.getElementById("raveProgressFill");
+
+const raveProgressBar = document.getElementById("raveProgressBar");
+
+const raveCurrentTime = document.getElementById("raveCurrentTime");
+
+const raveDuration = document.getElementById("raveDuration");
+
+const raveStatus = document.getElementById("raveStatus");
+
+const ravePlayBtn = document.getElementById("ravePlayBtn");
+
+const ravePauseBtn = document.getElementById("ravePauseBtn");
 
 
 
+function formatTime(seconds) {
+
+    if (isNaN(seconds) || seconds < 0) return "0:00";
+
+    const mins = Math.floor(seconds / 60);
+
+    const secs = Math.floor(seconds % 60);
+
+    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+}
 
 
-function toggleMusic(){
 
-    if(music.paused){
-        music.play().then(() => {
-            document.getElementById("raveBtn").textContent = "Pause Together ⏸";
-            document.getElementById("raveStatus").textContent = "Playing our song... Just like our Rave nights ❤️🎵";
-        }).catch(()=>{});
-    }else{
-        music.pause();
-        document.getElementById("raveBtn").textContent = "Press Play Together ▶";
-        document.getElementById("raveStatus").textContent = "Music paused. Press play to restart our song 🫶";
+function updateProgress() {
+
+    if (!music.duration) return;
+
+    const percent = (music.currentTime / music.duration) * 100;
+
+    raveProgressFill.style.width = percent + "%";
+
+    raveCurrentTime.textContent = formatTime(music.currentTime);
+
+    raveDuration.textContent = formatTime(music.duration);
+
+}
+
+
+
+music.addEventListener("loadedmetadata", () => {
+
+    raveDuration.textContent = formatTime(music.duration);
+
+});
+
+
+
+music.addEventListener("timeupdate", updateProgress);
+
+
+
+music.addEventListener("ended", () => {
+
+    raveStatus.textContent = "Song ended. Replaying our memories... ❤️";
+
+});
+
+
+
+function playSong() {
+
+    const playPromise = music.play();
+
+    if (playPromise !== undefined) {
+
+        playPromise.then(() => {
+
+            raveStatus.textContent = "Playing our song... Just like our Rave nights 🎵❤️";
+
+        }).catch((err) => {
+
+            console.warn("Autoplay/Play prevented: ", err);
+
+            raveStatus.textContent = "Tap screen or play button again to start audio! 🎵";
+
+        });
+
     }
 
 }
+
+
+
+function pauseSong() {
+
+    music.pause();
+
+    raveStatus.textContent = "Music paused. Waiting for you to press play 🫶";
+
+}
+
+
+
+ravePlayBtn.onclick = () => {
+
+    playSong();
+
+    heartPop(ravePlayBtn);
+
+};
+
+
+
+ravePauseBtn.onclick = () => {
+
+    pauseSong();
+
+    heartPop(ravePauseBtn);
+
+};
+
+
+
+raveProgressBar.onclick = (e) => {
+
+    if (!music.duration) return;
+
+    const rect = raveProgressBar.getBoundingClientRect();
+
+    const clickX = e.clientX - rect.left;
+
+    const width = rect.width;
+
+    music.currentTime = (clickX / width) * music.duration;
+
+};
 
 
 
@@ -7464,7 +7689,24 @@ document
 
 
 
+// Try unlocking audio context on initial entry click
+
+music.play().then(() => {
+
+    raveStatus.textContent = "Playing our song... Just like our Rave nights 🎵❤️";
+
+}).catch(() => {
+
+    raveStatus.textContent = "Waiting for my favourite person to press play... 🫶";
+
+});
+
+
+
+
+
 initReveal();
+
 startPickupTimer();
 
 
@@ -8082,42 +8324,6 @@ heartPop(
 document
 
 .getElementById("cricketBtn")
-
-);
-
-
-
-};
-
-
-
-
-
-/* =========================================================
-
-RAVE
-
-========================================================= */
-
-
-
-document
-
-.getElementById("raveBtn")
-
-.onclick = () => {
-
-
-
-toggleMusic();
-
-
-
-heartPop(
-
-document
-
-.getElementById("raveBtn")
 
 );
 
